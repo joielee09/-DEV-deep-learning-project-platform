@@ -31,6 +31,8 @@
   },
   "homepage": "https://github.com/tahnik/react-express-webpack-babel#readme",
   "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
     "cross-env": "^5.2.0",
     "ejs": "^2.6.1",
     "express": "^4.17.1",

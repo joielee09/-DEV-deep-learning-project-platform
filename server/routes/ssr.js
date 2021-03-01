@@ -62,12 +62,14 @@ router.get('/', (req, res) => {
   if (context.url) {
     res.writeHead(301, {
       Location: context.url,
+      'Access-Control-Allow-Origin': '*'
     });
     res.end();
   } else {
     res.status(200).render('../views/index.ejs', {
       html,
       script: JSON.stringify(finalState),
+      'Access-Control-Allow-Origin': '*'
     });
   }
 });
