@@ -9,6 +9,6 @@ app.use(express.static('public'));
 
 app.use('/*', ssr);
 
-app.listen(5000, () => {
-  console.log('Hello World listening on port 5000!');
+app.listen(80, () => {
+  console.log('Hello World listening on port 80!');
 });

@@ -15,11 +15,13 @@ class ListItemView extends Component {
 
     return (
       <div className="view_item">
+        <h2>{ item.name }</h2>
+        <p>{item.description}</p>
+        {/* upload image-> call curl call with image -> get results */}
+        <imagebutton type="button"> get picture </imagebutton>
         <Link to="/">
           <button type="button">Back</button>
         </Link>
-        <h2>{ item.name }</h2>
-        <p>{ item.description }</p>
       </div>
     );
   }
