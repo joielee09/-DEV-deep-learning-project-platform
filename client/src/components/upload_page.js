@@ -37,11 +37,11 @@ const Upload = () => {
   // const imgUrl = canvas.toDataURL(query);
   // console.log("imgUrl: ", imgUrl);
   
-  const data = { imageFile: 'https://img2.yna.co.kr/etc/inner/KR/2017/07/31/AKR20170731103800005_04_i_P2.jpg' };
+  const data = { imageFile: 'https://lh3.googleusercontent.com/proxy/9P3jRsTRVldlvkAb4rHRnWFX2Mj36A-i6BBm9ZSU8lKgtaGKv0Cg4Ci4L7zrQIgbLRzNOMiZR9Vuw9GIpRLvl2DHN7p4vZSHvM4yaeT9P0iwCxUhHg1zAe2KM2IsnsAlCAR02_gLO6ZIrfx1s6bEv10GXuspH8GR9jmQUJuoWBXk7SiCKDYsbwOTJ8FhTUkmsQ' };
   
   axios({
     method: 'POST',
-    baseURL: 'http://0fcee3237c02.ngrok.io/post',
+    baseURL: 'http://e415f9aee88b.ngrok.io/post',
     headers: {
       'Content-Type': 'multipart/form-data',
     },
