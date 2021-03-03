@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { query } from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { createStore } from 'redux';
@@ -27,10 +27,12 @@ const upload = multer({
 router.post('/', upload.single('imgFile'), (req, res) => {
   const data = `/uploads/${req.file.filename}`;
   console.log("data", data);
+  const query = encodeURIComponent(data);
   try {
     console.log("req", req.file);
     // res.redirect('/');  
-    res.redirect('/view/imageCNN')
+    res.redirect(`/upload_page/?valid=${query}`)
+    // res.render('index.dev.ejs');
   } catch (error) {
     console.log(error);
   }

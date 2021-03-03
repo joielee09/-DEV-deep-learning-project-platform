@@ -16,18 +16,18 @@ const ListItemPreview = ({ item }) => {
     formData.append('imageFile', file);
     const data = { imageFile: file };
 
-    axios({
-      method: 'POST',
-      baseURL: 'http://275386750a8a.ngrok.io/post',
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-      data: data
-    })
-      .then((result) => {
-        console.log('Yes! 🙆‍♀️ ', result);
-      })
-      .catch(error => console.log('Oppppsss 🙅‍♀️ ', error));
+    // axios({
+    //   method: 'POST',
+    //   baseURL: 'http://275386750a8a.ngrok.io/post',
+    //   headers: {
+    //     'Content-Type': 'multipart/form-data',
+    //   },
+    //   data: data
+    // })
+    //   .then((result) => {
+    //     console.log('Yes! 🙆‍♀️ ', result);
+    //   })
+    //   .catch(error => console.log('Oppppsss 🙅‍♀️ ', error));
   
   };
 
@@ -64,7 +64,7 @@ const ListItemPreview = ({ item }) => {
 
       <form method="POST" action="/" encType="multipart/form-data">
         <input type="file" name='imgFile' id="imgFile" onChange={e=>onChange(e)} />
-        <input type="submit" value="보내기" onClick={()=>console.log("submitttttttted")} />
+        <input type="submit" value="보내기" onClick={e=>onClickHandler(e)} />
       </form>
     </div>
   );
