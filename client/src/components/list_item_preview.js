@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes, { func } from 'prop-types';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+
 
 const ListItemPreview = ({ item }) => {
   const [prevUrl, setPrevUrl] = useState('https://lumiere-a.akamaihd.net/v1/images/open-uri20160811-32147-15bzuw4_0f357d00.jpeg?region=0%2C0%2C600%2C600');
@@ -11,24 +11,23 @@ const ListItemPreview = ({ item }) => {
   
 
   const onClickHandler = (e) => {
-    console.log('submitted');
+  console.log('submitted');
 
-    formData.append('imageFile', file);
-    const data = { imageFile: file };
-
-    // axios({
-    //   method: 'POST',
-    //   baseURL: 'http://275386750a8a.ngrok.io/post',
-    //   headers: {
-    //     'Content-Type': 'multipart/form-data',
-    //   },
-    //   data: data
-    // })
-    //   .then((result) => {
-    //     console.log('Yes! 🙆‍♀️ ', result);
-    //   })
-    //   .catch(error => console.log('Oppppsss 🙅‍♀️ ', error));
+  // let data = new FormData();
+  // data.append('file', file, file.fileName);
   
+  // axios({
+  //   method: 'POST',
+  //   baseURL: 'http://52e091099e49.ngrok.io/post',
+  //   headers: {
+  //     'Content-Type': 'multipart/form-data',
+  //   },
+  //   image: data
+  // })
+  //   .then((result) => {
+  //     console.log('Yes! 🙆‍♀️ ', result);
+  //   })
+  //   .catch(error => console.log('Oppppsss 🙅‍♀️ ', error));
   };
 
   const onChange = (e) => {
