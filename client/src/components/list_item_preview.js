@@ -1,25 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes, { func } from 'prop-types';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const ListItemPreview = ({ item }) => {
-  const onClickHandler = () => {
-    console.log('submitted!1');
+  const [prevUrl, setPrevUrl] = useState('https://lumiere-a.akamaihd.net/v1/images/open-uri20160811-32147-15bzuw4_0f357d00.jpeg?region=0%2C0%2C600%2C600');
+  const [file, setFile] = useState();
+  const [imgInfo, setImfInfo] = useState();
+  const [src, setSrc] = useState();
+  
+
+  const onClickHandler = (e) => {
+    console.log('submitted');
+
+    formData.append('imageFile', file);
+    const data = { imageFile: file };
+
+    axios({
+      method: 'POST',
+      baseURL: 'http://275386750a8a.ngrok.io/post',
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+      data: data
+    })
+      .then((result) => {
+        console.log('Yes! 🙆‍♀️ ', result);
+      })
+      .catch(error => console.log('Oppppsss 🙅‍♀️ ', error));
+  
   };
 
   const onChange = (e) => {
     e.preventDefault();
     // get uploaded filename
-    const file = e.target.files[0];
-    // axios post
-    axios.post('http://13e0d206789b.ngrok.io', { file })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    setFile(e.target.files[0]);
+    const imageFile = e.target.files[0];
+    setPrevUrl(URL.createObjectURL(imageFile));
   };
 
   if (!item) {
@@ -38,11 +55,17 @@ const ListItemPreview = ({ item }) => {
         {' '}
       </h2>
       <p>{item.description}</p>
-      <input type="file" multiple onChange={e => onChange(e)} />
-      <button type="submit" onClick={onClickHandler}>전송하기</button>
+      <input type="file" id="imageInput" multiple onChange={e => onChange(e)} name="file"  accept="image/*" />
+      <img src={prevUrl} width="100" alt="uploaded" />
+      <button type="submit" onClick={e => onClickHandler(e)}>전송하기</button>
       <Link to={`view/${item.name}`}>
         <button type="button" className="btn btn-primary">Read </button>
       </Link>
+
+      <form method="POST" action="/" encType="multipart/form-data">
+        <input type="file" name='imgFile' id="imgFile" onChange={e=>onChange(e)} />
+        <input type="submit" value="보내기" onClick={()=>console.log("submitttttttted")} />
+      </form>
     </div>
   );
 };

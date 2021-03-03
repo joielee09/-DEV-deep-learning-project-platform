@@ -7,8 +7,32 @@ import { StaticRouter } from 'react-router';
 import reducers from '../../client/src/reducers/index';
 import { LIST_ACTIONS } from '../../client/src/consts/action_types';
 import App from '../../client/src/app';
+import multer from 'multer';
+const path = require('path');
 
 const router = express.Router();
+
+const storage  = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename(req, file, cb) {
+    cb(null, file.fieldname + "-" + Date.now()+".jpg");
+  },
+});
+
+const upload = multer({
+  storage: storage,
+});
+router.post('/', upload.single('imgFile'), (req, res, next) => {
+  try {
+    console.log("req", req.file);
+    // res.redirect('/');  
+    res.redirect('/view/imageCNN')
+  } catch (error) {
+    console.log(error);
+  }
+})
 
 router.get('/', (req, res) => {
   /*
@@ -45,7 +69,6 @@ router.get('/', (req, res) => {
   });
 
   const context = {};
-
   const html = ReactDOMServer.renderToString(
     <Provider store={store}>
       <StaticRouter
