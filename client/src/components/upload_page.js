@@ -37,11 +37,11 @@ const Upload = () => {
   // const imgUrl = canvas.toDataURL(query);
   // console.log("imgUrl: ", imgUrl);
   
-  const data = { imageFile: 'https://lh3.googleusercontent.com/proxy/9P3jRsTRVldlvkAb4rHRnWFX2Mj36A-i6BBm9ZSU8lKgtaGKv0Cg4Ci4L7zrQIgbLRzNOMiZR9Vuw9GIpRLvl2DHN7p4vZSHvM4yaeT9P0iwCxUhHg1zAe2KM2IsnsAlCAR02_gLO6ZIrfx1s6bEv10GXuspH8GR9jmQUJuoWBXk7SiCKDYsbwOTJ8FhTUkmsQ' };
+  const data = { imageFile: 'https://dispatch.cdnser.be/wp-content/uploads/2016/05/20160502220004_2016050220401879101_1_99_20160502204403.jpg' };
   
   axios({
     method: 'POST',
-    baseURL: 'http://e415f9aee88b.ngrok.io/post',
+    baseURL: 'http://075a58887715.ngrok.io/post',
     headers: {
       'Content-Type': 'multipart/form-data',
     },
