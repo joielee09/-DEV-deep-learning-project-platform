@@ -30,23 +30,6 @@ router.post('/', upload.single('imgFile'), (req, res) => {
   const query = encodeURIComponent(data);
   try {
     console.log("req", req.file);
-    
-  //   let data = new FormData();
-  // data.append('file', file, file.fileName);
-  
-  // axios({
-  //   method: 'POST',
-  //   baseURL: 'http://52e091099e49.ngrok.io/post',
-  //   headers: {
-  //     'Content-Type': 'multipart/form-data',
-  //   },
-  //   image: data
-  // })
-  //   .then((result) => {
-  //     console.log('Yes! 🙆‍♀️ ', result);
-  //   })
-  //   .catch(error => console.log('Oppppsss 🙅‍♀️ ', error));
-
     res.redirect(`/upload_page/?valid=${query}`)
     // res.render('index.dev.ejs');
   } catch (error) {
