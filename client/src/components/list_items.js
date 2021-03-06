@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class ListView extends Component {
   renderList() {
@@ -7,11 +8,9 @@ class ListView extends Component {
     return Object.keys(listItems).map((key) => {
       const item = listItems[key];
       return (
-        <li
-          key={item.name}
-        >
-          <button onClick={() => previewItem(item.name)}>{ item.name }</button>
-        </li>
+        <Link to={`view/${item.name}`}>
+        <button type="button" className="btn btn-primary">Read </button>
+        </Link>
       );
     });
   }

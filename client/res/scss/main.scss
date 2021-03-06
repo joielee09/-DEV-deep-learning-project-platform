@@ -3,21 +3,23 @@
 @import './view_item.scss';
 
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,600|Roboto:100,300');
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&display=swap');
 
 .reactbody {
   background-color: $color5;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Roboto', sans-serif;
+  
 }
 
 h1 {
-  font-weight: 300;
+  font-weight: 500;
+  font-family: 'Lobster Two', sans-serif;
 }
 
 button {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Raleway', sans-serif;
   background-color: $color1;
   font-weight: 300;
   border: none;

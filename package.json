@@ -32,6 +32,8 @@
   "homepage": "https://github.com/tahnik/react-express-webpack-babel#readme",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",
     "canvas": "^2.7.0",
     "cors": "^2.8.5",
@@ -43,6 +45,7 @@
     "npm": "^6.9.0",
     "npm-upgrade": "^1.4.1",
     "prop-types": "^15.7.2",
+    "pug": "^3.0.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-hot-loader": "^4.9.0",

@@ -6,12 +6,14 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   context: path.join(__dirname, '../client'),
   devtool: 'source-map',
+  //cf. multiple entry: https://velog.io/@noyo0123/%EC%9B%B9%ED%8C%A9%EC%A0%95%EB%A6%AC
   entry: [
     './src/index.js',
     './res/scss/main.scss',
   ],
   mode: 'production',
   output: {
+    // front page(multiple pages) goes to server
     path: path.join(__dirname, '../server/public'),
     filename: './js/index.js',
     publicPath: '/',

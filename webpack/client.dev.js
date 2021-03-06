@@ -6,6 +6,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   context: path.join(__dirname, '../client'),
   devtool: 'inline-source-map',
+  // multipage application
+  // https://velog.io/@noyo0123/%EC%9B%B9%ED%8C%A9%EC%A0%95%EB%A6%AC
   entry: [
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',

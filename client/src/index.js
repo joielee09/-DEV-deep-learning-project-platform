@@ -40,9 +40,3 @@ if (module.hot) {
     render(nextApp);
   });
 }
-
-// module.hot.accept('./reducers', () => {
-//   // eslint-disable-next-line
-//   const nextRootReducer = require('./reducers/index');
-//   store.replaceReducer(nextRootReducer);
-// });

@@ -28,16 +28,6 @@ const Upload = () => {
     const imgUrl = `http://localhost:${PORT}${query}`;
     console.log(imgUrl);
 
-    // const imgFile =
-
-    // other ways to convert image to url?
-    // const reader = new FileReader();
-    // reader.readAsDataURL()
-
-    // const canvas = createCanvas();
-    // const imgUrl = canvas.toDataURL(query);
-    // console.log("imgUrl: ", imgUrl);
-
     const data = { imageFile: 'https://pds.joins.com/news/component/htmlphoto_mmdata/201912/17/07712b9e-e451-49c7-a65c-fb94b6dcda0b.jpg'};
     
     const formData = new FormData();
