@@ -2,27 +2,15 @@ import React, { Component, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
-  CV, NLP, RecSys, ETC,
+  projects,
 } from '../../../db.js';
 
 const ListItemView = (params) => {
   const { name } = params.match.params;
-  const [data, setData] = useState([]);
+  const data = projects[name];
+  // const [data, setData] = useState([]);
+  // console.log("data: ", projects[name]);
 
-  //database에서 name에 맞는 데이터를 불러와서
-  const getData = (name) => {
-    if (name === 'CV') setData(CV);
-    else if (name === 'NLP') setData(NLP);
-    else if (name === 'RecSys') setData(RecSys);
-    else setData(ETC);
-  };
-
-  useEffect(() => { getData(); }, []);
-  useEffect(() => {
-    getData(name);
-    console.log("name changed");
-  }, [name])
-  
   return (
     <div className="view_item" style={{ display: 'flex' }}>
       <h1>{name}</h1>
