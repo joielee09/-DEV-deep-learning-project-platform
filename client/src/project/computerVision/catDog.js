@@ -3,13 +3,13 @@ import PropTypes, { func } from 'prop-types';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const ListItemPreview = ({ item }) => {
+const ListItemPreview = () => {
   let file = '';
   let blob = '';
   let base_64 = '';
   
-  const [img, setImg] = useState('https://lumiere-a.akamaihd.net/v1/images/open-uri20160811-32147-15bzuw4_0f357d00.jpeg?region=0%2C0%2C600%2C600');
-  const [resImg, setResImg] = useState('https://www.stch.org.uk/wp-content/uploads/2020/06/question-mark.png')
+  const [img, setImg] = useState('https://webcomicms.net/sites/default/files/clipart/157574/images-cat-157574-9434318.jpg');
+  const [resImg, setResImg] = useState('https://specials-images.forbesimg.com/imageserve/5db4c7b464b49a0007e9dfac/960x0.jpg?fit=scale')
   const [resFromAxios, setResFromAxios] = useState();
 
   const handleResult = (res) => {
@@ -55,30 +55,12 @@ const ListItemPreview = ({ item }) => {
     setImg(URL.createObjectURL(file));
   };
 
-
-  if (!item) {
-    return (
-      <div className="preview">
-        <h3>Select an item</h3>
-        <p>Description will appear here</p>
-      </div>
-    );
-  }
   return (
     <div className="preview">
-      <h2>
-        {' '}
-        { item.name }
-        {' '}
-      </h2>
-      <p>{item.description}</p>
       <input type="file" id="imageInput" multiple onChange={e => onChange(e)} name="file" accept="image/*" />
       <img src={img} width="500" alt="uploaded image" />
       <button type="submit" onClick={e => onClickHandler(e)}>전송하기</button>
       <img src={resImg} width="500" alt="result image" />
-      <Link to={`view/${item.name}`}>
-        <button type="button" className="btn btn-primary">Read </button>
-      </Link>
 
       <form method="POST" action="/" encType="multipart/form-data">
         <input type="file" name="imgFile" id="imgFile" onChange={e => onChange(e)} />
@@ -89,11 +71,9 @@ const ListItemPreview = ({ item }) => {
 };
 
 ListItemPreview.propTypes = {
-  item: PropTypes.object,
 };
 
 ListItemPreview.defaultProps = {
-  item: null,
 };
 
 export default ListItemPreview;

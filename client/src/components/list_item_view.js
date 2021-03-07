@@ -8,8 +8,6 @@ import {
 const ListItemView = (params) => {
   const { name } = params.match.params;
   const data = projects[name];
-  // const [data, setData] = useState([]);
-  // console.log("data: ", projects[name]);
 
   return (
     <div className="view_item" style={{ display: 'flex' }}>
@@ -25,7 +23,11 @@ const ListItemView = (params) => {
       >
         {data
           ? data.map(cur => (
-            <Link to={`/view/${name}/${cur.id}`}>
+            <Link
+              to={{
+                pathname: `/view/${name}/${cur.id}`,
+                state: { cur }
+              }}>
               <div
                 className="item_card"
                 style={{
@@ -33,6 +35,7 @@ const ListItemView = (params) => {
                   marginRight: '40px',
                   marginBottom: '80px',
                 }}
+                key={cur.id}
               >
                 <h3>{cur.title}</h3>
                 <img src={cur.image} width="150px" />

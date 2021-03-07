@@ -10,7 +10,7 @@ const Header = () => {
   ];
   const [value, setValue] = useState('');
   return (
-    <div style={{ marginTop: 20 }} className="header">
+    <div style={{ marginTop: 50 }} className="header">
       {/* Title */}
       <Link to={'/'}>
       <h1 style={{ textDecoration: "none" }}>Deep Learning Applications</h1>
