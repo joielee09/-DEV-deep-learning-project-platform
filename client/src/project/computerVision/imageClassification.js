@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import FormData from 'form-data';
-import { PORT } from '../../../utils';
+import { PORT } from '../../../../utils';
 
 // query parsing해서 >> axios를 보내서 >> 예측결과를 받아와서 >> 거기에 맞는 image를 render한다.
 

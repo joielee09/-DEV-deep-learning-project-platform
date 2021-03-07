@@ -22,8 +22,7 @@ router.get('/', (req, res) => {
       {/* StaticRouter: https://reactrouter.com/web/guides/server-rendering, localhost:5001/#/eachUrl */}
       <StaticRouter
         location={req.originalUrl}
-        context={context}
-      >
+        context={context}>
         <App />
       </StaticRouter>
     </Provider>,

@@ -50,10 +50,10 @@ export const RecSys = [
 ];
 
 export const ETC = [
-  {
-    id: 401,
-    title:"IBM Watson",
-    description:"One of the most excellent examples of Machine Learning and Deep Learning is IBM Watson. The greatest aspect of IBM Watson is that it allows Data Scientists and ML Engineers/Developers to collaborate on an integrated platform to enhance and automate the AI life cycle.",
-    image:"https://images.techhive.com/images/article/2015/09/ibm-watson-100616825-large.jpg"
-  },
+  // {
+  //   id: 401,
+  //   title:"IBM Watson",
+  //   description:"One of the most excellent examples of Machine Learning and Deep Learning is IBM Watson. The greatest aspect of IBM Watson is that it allows Data Scientists and ML Engineers/Developers to collaborate on an integrated platform to enhance and automate the AI life cycle.",
+  //   image:"https://images.techhive.com/images/article/2015/09/ibm-watson-100616825-large.jpg"
+  // },
 ];
