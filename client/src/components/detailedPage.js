@@ -14,7 +14,8 @@ const DetailedPage = (params) => {
   const handleComponent = (param) => {
     console.log("component: ", param);
     if (param === 'imageClassification') return <ImageProject />;
-    if (param === 'catDog') return <CatDog />;
+    // if (param === 'catDog') return <CatDog />;
+    else return <img src={"https://cdn.aitimes.kr/news/photo/202002/15296_16544_4827.jpg"} width="700px" />
   };
 
   return (

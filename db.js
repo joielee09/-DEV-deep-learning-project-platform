@@ -20,7 +20,7 @@ export const projects = {
       title: 'Face detection system',
       description: 'This is one of the excellent deep learning project ideas for beginners. With the advance of deep learning, facial recognition technology has also advanced tremendously.',
       image: 'https://i.ytimg.com/vi/98Q-DgVxBr4/hqdefault.jpg',
-      component: 'imageClassification'
+      component: 'catDog'
     },
   ],
 
@@ -37,7 +37,7 @@ export const projects = {
       title: 'Chatbot',
       description: 'In this project, you will model a chatbot using IBM Watson’s API. Watson is the prime example of what AI can help us accomplish. The idea behind this project is to harness Watson’s deep learning abilities to create a chatbot that can engage with humans just like another human being. ',
       image: 'https://miro.medium.com/max/960/1*I64Vb8nssoNkOshRar7RXg.jpeg',
-      component: 'imageClassification'
+      component: 'catDog'
     },
   ],
 
@@ -47,7 +47,7 @@ export const projects = {
       title: 'Data Science for Good: CareerVillage.org',
       description: 'CareerVillage.org is a nonprofit that crowdsources career advice for underserved youth. Founded in 2011 in four classrooms in New York City, the platform has now served career advice from 25,000 volunteer professionals to over 3.5M online learners. The platform uses a Q&A style similar to StackOverflow or Quora to provide students with answers to any question about any career.',
       image: 'https://data-flair.training/blogs/wp-content/uploads/sites/2/2019/07/recommendation-system-project-in-R.png',
-      component: 'imageClassification'
+      component: 'catDog'
     },
     {
       id: 302,
@@ -59,12 +59,12 @@ export const projects = {
   ],
 
   "ETC":[
-    {
-      id: 401,
-      title: 'IBM Watson',
-      description: 'One of the most excellent examples of Machine Learning and Deep Learning is IBM Watson. The greatest aspect of IBM Watson is that it allows Data Scientists and ML Engineers/Developers to collaborate on an integrated platform to enhance and automate the AI life cycle.',
-      image: 'https://images.techhive.com/images/article/2015/09/ibm-watson-100616825-large.jpg',
-      component: 'imageClassification'
-    },
+    // {
+    //   id: 401,
+    //   title: 'IBM Watson',
+    //   description: 'One of the most excellent examples of Machine Learning and Deep Learning is IBM Watson. The greatest aspect of IBM Watson is that it allows Data Scientists and ML Engineers/Developers to collaborate on an integrated platform to enhance and automate the AI life cycle.',
+    //   image: 'https://images.techhive.com/images/article/2015/09/ibm-watson-100616825-large.jpg',
+    //   component: 'imageClassification'
+    // },
   ],
 };

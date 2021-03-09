@@ -11,7 +11,7 @@ const ListItemView = (params) => {
 
   return (
     <div className="view_item" style={{ display: 'flex' }}>
-      <h1>{name}</h1>
+      <h2>{name}</h2>
       <div
         className="list_item"
         style={{

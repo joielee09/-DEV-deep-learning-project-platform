@@ -27,7 +27,7 @@ const ListItemPreview = () => {
 
     // setTimeout(console.log('Wait...'), 12000);
     axios.post(
-      'http://169a1ffed376.ngrok.io/post',
+      'http://676eeded7411.ngrok.io/post',
       data,
       { headers: {  'Content-Type': 'multipart/form-data',  },  },
     )
