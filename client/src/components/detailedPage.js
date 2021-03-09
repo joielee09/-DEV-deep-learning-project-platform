@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { projects } from '../../../db.js';
 
 import ImageProject from '../project/computerVision/imageClassification';
@@ -8,23 +7,24 @@ import CatDog from '../project/computerVision/catDog';
 const DetailedPage = (params) => {
   const category = params.match.params.name; // 예를 들면 'CV'
   const cat_id = params.match.params.id; // 예를 들면 '101'
-  const project = projects[category].filter(cur => parseInt(cur.id) === parseInt(cat_id));
-
+  const project_ = projects[category].filter(cur => parseInt(cur.id) === parseInt(cat_id));
+  const project = project_[0];
   // dynamic importing
   // let module = await import('../project/computerVision/imageClassification');
   const handleComponent = (param) => {
+    console.log("component: ", param);
     if (param === 'imageClassification') return <ImageProject />;
     if (param === 'catDog') return <CatDog />;
   };
 
   return (
-    <div className="detailed">
+    <div className="detailed" style={{ padding:"100px", paddingTop:"20px" }}>
       {/* Project Title */}
-      <h1>{`Project Name: ${project.title}`}</h1>
+      <h2>{`Project Name: ${project.title}`}</h2>
 
       {/* Project: get the component path */}
-      <div className="projectContainer" width="700px">
-        {() => handleComponent()}
+      <div className="projectContainer" style={{ padding:"70px" }}>
+        {handleComponent(project.component)}
       </div>
 
       {/* Summary */}

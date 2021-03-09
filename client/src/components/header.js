@@ -12,9 +12,9 @@ const Header = () => {
   return (
     <div style={{ marginTop: 50 }} className="header">
       {/* Title */}
-      <Link to={'/'}>
+      {/* <Link to={'/'}> */}
       <h1 style={{ textDecoration: "none" }}>Deep Learning Applications</h1>
-      </Link>
+      {/* </Link> */}
       {/* Search Box */}
       <form className="search-form">
         <input type="text" name="search" placeholder="Search..." defaultValue={value || ''} />
