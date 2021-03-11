@@ -31,10 +31,33 @@ const ContentBasedMoiveRecommend = () => {
     const result = await request.get(`/movie/popular`);
     console.log(result);
   }
+  const getMovie = async (param) => {
+    const result = await request.get("search/movie", {
+      params: {
+        query: encodeURIComponent(param)
+      }
+    })
+    console.log(result);
+
+    const first_movie = result.data.results[0];
+    const second_movie = result.data.results[1];
+    const thirc_movie = result.data.results[2];
+    const forth_movie = result.data.results[3];
+
+    const poster_path_first = first_movie.poster_path;
+    const poster_path_second = second_movie.poster_path;
+    const poster_path_third = thirc_movie.poster_path;
+    const poster_path_forth = forth_movie.poster_path;
+
+    setImg1(`http://image.tmdb.org/t/p/w200/${poster_path_first}`);
+    setImg2(`http://image.tmdb.org/t/p/w200/${poster_path_second}`);
+    setImg2(`http://image.tmdb.org/t/p/w200/${poster_path_third}`);
+    setImg2(`http://image.tmdb.org/t/p/w200/${poster_path_forth}`);
+  }
 
   const onClickhandler = (e) => {
     e.preventDefault(); // prevent to change route
-    handleList(17362);
+    getMovie('strawberry');
     /*
     console.log('event: ', value);
 
