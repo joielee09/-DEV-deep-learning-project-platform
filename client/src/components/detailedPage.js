@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 import { projects } from '../../../db.js';
 
 import ImageProject from '../project/computerVision/imageClassification';
+import ContentBasedMoiveRecommend from '../project/RecSys/contentBased';
 import CatDog from '../project/computerVision/catDog';
 
 const DetailedPage = (params) => {
+
   const category = params.match.params.name; // 예를 들면 'CV'
   const cat_id = params.match.params.id; // 예를 들면 '101'
   const project_ = projects[category].filter(cur => parseInt(cur.id) === parseInt(cat_id));
   const project = project_[0];
+  
   // dynamic importing
-  // let module = await import('../project/computerVision/imageClassification');
   const handleComponent = (param) => {
-    console.log("component: ", param);
     if (param === 'imageClassification') return <ImageProject />;
-    // if (param === 'catDog') return <CatDog />;
+    if (param === 'contentBasedMovie') return <ContentBasedMoiveRecommend />;
     else return <img src={"https://cdn.aitimes.kr/news/photo/202002/15296_16544_4827.jpg"} width="700px" />
   };
 

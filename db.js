@@ -44,18 +44,19 @@ export const projects = {
   "RecSys":[
     {
       id: 301,
+      title: 'movie recommendation',
+      description: 'recommendation systems (RS) are the systems that are used for recommendation purposes. These recommendations can be anything from articles, blogs to different products.',
+      image: 'https://analyticsindiamag.com/wp-content/uploads/2020/08/stars-movies-1200x670-1.jpg',
+      component: 'contentBasedMovie'
+    },
+    {
+      id: 302,
       title: 'Data Science for Good: CareerVillage.org',
       description: 'CareerVillage.org is a nonprofit that crowdsources career advice for underserved youth. Founded in 2011 in four classrooms in New York City, the platform has now served career advice from 25,000 volunteer professionals to over 3.5M online learners. The platform uses a Q&A style similar to StackOverflow or Quora to provide students with answers to any question about any career.',
       image: 'https://data-flair.training/blogs/wp-content/uploads/sites/2/2019/07/recommendation-system-project-in-R.png',
       component: 'catDog'
     },
-    {
-      id: 302,
-      title: 'movie recommendation',
-      description: 'recommendation systems (RS) are the systems that are used for recommendation purposes. These recommendations can be anything from articles, blogs to different products.',
-      image: 'https://analyticsindiamag.com/wp-content/uploads/2020/08/stars-movies-1200x670-1.jpg',
-      component: 'catDog'
-    },
+    
   ],
 
   "ETC":[
