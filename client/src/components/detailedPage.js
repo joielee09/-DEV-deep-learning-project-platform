@@ -3,7 +3,6 @@ import { projects } from '../../../db.js';
 
 import ImageProject from '../project/computerVision/imageClassification';
 import ContentBasedMoiveRecommend from '../project/RecSys/contentBased';
-import CatDog from '../project/computerVision/catDog';
 
 const DetailedPage = (params) => {
 

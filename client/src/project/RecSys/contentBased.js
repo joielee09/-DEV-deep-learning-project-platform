@@ -20,24 +20,21 @@ const ContentBasedMoiveRecommend = () => {
 
   const handleList = async (movieList) => {
     console.log('movie List: ', movieList);
-    getMovie(movieList[0]);
+
+    const result_1 = await getMovie(movieList[0]);
+    const result_2 = await getMovie(movieList[1]);
+    const result_3 = await getMovie(movieList[2]);
+    const result_4 = await getMovie(movieList[3]);
+    console.log("results_ 1234: ", result_1, result_2, result_3, result_4);
+    
     // imdb에서 영화 이미지 받아오기
     // const result = await request.get(`/movie/popular`);
     // getMovie(mList~4번째영화까지);
-  };
-  const getMovie = async (param) => {
-    const result = await request.get('search/movie', {
-      params: {
-        query: (param),
-      },
-    });
-    console.log(result);
-
-    const first_movie = result.data.results[0];
-    const second_movie = result.data.results[1];
-    const third_movie = result.data.results[2];
-    const forth_movie = result.data.results[3];
-
+    const first_movie = result_1.data.results[0];
+    const second_movie = result_2.data.results[0];
+    const third_movie = result_3.data.results[0];
+    const forth_movie = result_4.data.results[0];
+    console.log("movie: ", first_movie, second_movie, third_movie, forth_movie);
     const poster_path_first = first_movie? first_movie.poster_path: '';
     const poster_path_second = second_movie? second_movie.poster_path: '';
     const poster_path_third = third_movie? third_movie.poster_path: '';
@@ -50,8 +47,7 @@ const ContentBasedMoiveRecommend = () => {
     setImg1(
       first_movie
         ? `http://image.tmdb.org/t/p/w200/${poster_path_first}`
-        : 'https://cdn.univcoop.kr/static/theme/image/no-image.svg'
-        );
+        : 'https://cdn.univcoop.kr/static/theme/image/no-image.svg');
     setImg2(
       second_movie
         ? `http://image.tmdb.org/t/p/w200/${poster_path_second}`
@@ -64,6 +60,15 @@ const ContentBasedMoiveRecommend = () => {
       forth_movie
         ? `http://image.tmdb.org/t/p/w200/${poster_path_forth}`
         : 'https://cdn.univcoop.kr/static/theme/image/no-image.svg');
+  };
+
+  const getMovie = async (param) => {
+    const result = await request.get('search/movie', {
+      params: {
+        query: (param),
+      },
+    });
+    return result;
   };
 
   const onClickhandler = (e) => {
@@ -82,7 +87,7 @@ const ContentBasedMoiveRecommend = () => {
 
     const data = { title: value, year: year };
     axios.post(
-      'http://d88572de440c.ngrok.io/post',
+      'http://192d2c179809.ngrok.io/post',
       data,
       { headers: { 'Content-Type': 'application/json' } },
     )
