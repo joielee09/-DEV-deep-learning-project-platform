@@ -1,5 +1,4 @@
-// https://velopert.com/3425
-import express, { query } from 'express';
+import express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { createStore } from 'redux';

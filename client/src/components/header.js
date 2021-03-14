@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { projects } from '../../../db.js';
+
 const Header = () => {
   const category = [
     'CV',
@@ -13,15 +13,15 @@ const Header = () => {
     <div style={{ marginTop: 50 }} className="header">
       {/* Title */}
       {/* <Link to={'/'}> */}
-      <h1 style={{ textDecoration: "none" }}>Deep Learning Applications</h1>
+      <h1 style={{ textDecoration: 'none' }}>Deep Learning Applications</h1>
       {/* </Link> */}
-      
+
       {/* Search Box */}
       {/* <form className="search-form"> */}
-        {/* <input type="text" name="search" placeholder="Search..." defaultValue={value || ''} /> */}
-        {/* <button type="submit" className="search-button null">search</button> */}
+      {/* <input type="text" name="search" placeholder="Search..." defaultValue={value || ''} /> */}
+      {/* <button type="submit" className="search-button null">search</button> */}
       {/* </form> */}
-      
+
       {/* Main-nav */}
       <nav className="main-nav" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
         {

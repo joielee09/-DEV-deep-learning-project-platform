@@ -6,8 +6,8 @@ import ContentBasedMoiveRecommend from '../project/RecSys/contentBased';
 
 const DetailedPage = (params) => {
 
-  const category = params.match.params.name; // 예를 들면 'CV'
-  const cat_id = params.match.params.id; // 예를 들면 '101'
+  const category = params.match.params.name;
+  const cat_id = params.match.params.id;
   const project_ = projects[category].filter(cur => parseInt(cur.id) === parseInt(cat_id));
   const project = project_[0];
   
