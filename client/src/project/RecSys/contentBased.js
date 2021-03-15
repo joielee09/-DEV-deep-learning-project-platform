@@ -19,31 +19,23 @@ const ContentBasedMoiveRecommend = () => {
   const [img4, setImg4] = useState('https://cdn.univcoop.kr/static/theme/image/no-image.svg');
 
   const handleList = async (movieList) => {
-    console.log('movie List: ', movieList);
-
     const result_1 = await getMovie(movieList[0]);
     const result_2 = await getMovie(movieList[1]);
     const result_3 = await getMovie(movieList[2]);
     const result_4 = await getMovie(movieList[3]);
-    console.log("results_ 1234: ", result_1, result_2, result_3, result_4);
     
     // imdb에서 영화 이미지 받아오기
-    // const result = await request.get(`/movie/popular`);
-    // getMovie(mList~4번째영화까지);
     const first_movie = result_1.data.results[0];
     const second_movie = result_2.data.results[0];
     const third_movie = result_3.data.results[0];
     const forth_movie = result_4.data.results[0];
-    console.log("movie: ", first_movie, second_movie, third_movie, forth_movie);
+
     const poster_path_first = first_movie? first_movie.poster_path: '';
     const poster_path_second = second_movie? second_movie.poster_path: '';
     const poster_path_third = third_movie? third_movie.poster_path: '';
-    const poster_path_forth = forth_movie? forth_movie.poster_path: '';
-
-    console.log(poster_path_first, poster_path_second, poster_path_third, poster_path_forth);
-
+    const poster_path_forth = forth_movie ? forth_movie.poster_path : '';
+    
     // if poster doesn't exit -> render default image
-
     setImg1(
       first_movie
         ? `http://image.tmdb.org/t/p/w200/${poster_path_first}`
@@ -73,7 +65,6 @@ const ContentBasedMoiveRecommend = () => {
 
   const onClickhandler = (e) => {
     e.preventDefault(); // prevent to change route
-    console.log('event: ', value, 'year: ', year);
     // validity check
     if (!value || !year) {
       return;
@@ -87,18 +78,16 @@ const ContentBasedMoiveRecommend = () => {
 
     const data = { title: value, year: year };
     axios.post(
-      'http://192d2c179809.ngrok.io/post',
+      'http://dc3a83abd2ee.ngrok.io/post',
       data,
       { headers: { 'Content-Type': 'application/json' } },
     )
       .then((result) => {
         console.log('Yes! 🙆‍♀️ ', result);
         const res = JSON.parse(result.data);
-        // console.log("res.data: ", res.data);
         handleList(res.data);
       })
       .catch(error => console.log('Oppppsss 🙅‍♀️ ', error));
-    // throw Error('Something went wrong!'); // interupt code
   };
 
   return (
@@ -124,6 +113,8 @@ const ContentBasedMoiveRecommend = () => {
           onClick={e => onClickhandler(e)}
         />
       </form>
+      <span>입력 규칙: 글자시작은 대문자, 띄어쓰기, 개봉연도 입력</span><br/>
+      <span>입력예시: Toy Story 1997, Monsters, Inc. 2001, No Game No Life: Zero 2017 </span>
       <div className="renderMovie" style={{ display:'flex', justifyContent: 'space-around' }}>
         <img className="movieImg1" src={img1} alt="movie image" width="200px" height="300px" />
         <img className="movieImg2" src={img2} alt="movie image" width="200px" height="300px" />

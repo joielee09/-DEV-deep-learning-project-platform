@@ -8,27 +8,36 @@ const ListItemPreview = () => {
   let blob = '';
   
   const [img, setImg] = useState('https://cdn.univcoop.kr/static/theme/image/no-image.svg');
-  const [resImg, setResImg] = useState('https://culturacion.com/wp-content/uploads/2018/12/redes-neuronales-1280x720.jpg')
+  const [resImg, setResImg] = useState('https://e7.pngegg.com/pngimages/552/1016/png-clipart-black-and-gray-robot-illustration-robotics-fractal-foreign-exchange-market-artificial-intelligence-tech-robot-material-electronics-computer-wallpaper-thumbnail.png')
   const [resFromAxios, setResFromAxios] = useState();
   const [base_64, setBase_64] = useState();
+  const [resComment, setResComment] = useState();
 
   const handleResult = (res) => {
-    if (res === 'dog') setResImg('https://www.rd.com/wp-content/uploads/2019/01/shutterstock_690109897.jpg');
-    else if (res === 'cat') setResImg('https://www.albugle.com/wp-content/uploads/2019/02/cat.jpg');
-    else setResImg('https://cdn.mos.cms.futurecdn.net/m33Pou2DHPmjSvVGVX6sRH-1200-80.jpg');
+    if (res === 'dog') {
+      setResImg('https://www.rd.com/wp-content/uploads/2019/01/shutterstock_690109897.jpg');
+      setResComment('정답은 강아지🐶 입니다.');
+    }
+    else if (res === 'cat') {
+      setResImg('https://www.albugle.com/wp-content/uploads/2019/02/cat.jpg');
+      setResComment('정답은 고양이 🐱입니다.');
+    }
+    else {
+      setResImg('https://cdn.mos.cms.futurecdn.net/m33Pou2DHPmjSvVGVX6sRH-1200-80.jpg');
+      setResComment('정답은 다람쥐 🐹입니다.');
+    }
   }
 
   const onClickHandler = (e) => {
     e.preventDefault();
     const data = { imageFile: base_64 };
     axios.post(
-      'http://676eeded7411.ngrok.io/post',
+      'http://295e7ef9c715.ngrok.io/post',
       data,
       { headers: {  'Content-Type': 'multipart/form-data',  },  },
     )
       .then((result) => {
         console.log('Yes! 🙆‍♀️ ', result);
-        console.log('result from axios: ', resFromAxios);
         handleResult(result.data.class_name);
       })
       .catch(error => console.log('Oppppsss 🙅‍♀️ ', error));
@@ -39,7 +48,8 @@ const ListItemPreview = () => {
     file = e.target.files[0];
     blob = URL.createObjectURL(file);
     setImg(URL.createObjectURL(file));
-    setResImg('https://culturacion.com/wp-content/uploads/2018/12/redes-neuronales-1280x720.jpg');
+    setResImg('https://e7.pngegg.com/pngimages/552/1016/png-clipart-black-and-gray-robot-illustration-robotics-fractal-foreign-exchange-market-artificial-intelligence-tech-robot-material-electronics-computer-wallpaper-thumbnail.png')
+    // setResImg('https://culturacion.com/wp-content/uploads/2018/12/redes-neuronales-1280x720.jpg');
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file); // file equals blob
     fileReader.onload = function (e) {
@@ -57,7 +67,7 @@ const ListItemPreview = () => {
       </form>
 
       <img src={resImg} width="300" alt="result image" />
-
+      <span>{resComment}</span>
       
     </div>
   );
