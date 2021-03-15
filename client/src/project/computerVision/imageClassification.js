@@ -32,7 +32,7 @@ const ListItemPreview = () => {
     e.preventDefault();
     const data = { imageFile: base_64 };
     axios.post(
-      'http://295e7ef9c715.ngrok.io/post',
+      'http://5ff4d1c3c5c6.ngrok.io/post',
       data,
       { headers: {  'Content-Type': 'multipart/form-data',  },  },
     )
