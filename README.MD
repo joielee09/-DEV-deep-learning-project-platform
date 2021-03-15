@@ -3,10 +3,12 @@
 ![12](https://user-images.githubusercontent.com/67178982/111092523-a45c9500-8579-11eb-8e5a-f8423ca24d38.PNG)
 
 coworking with...
-🙌 https://github.com/joielee09
-🙌 https://github.com/doritos0812
+🙌 https://github.com/joielee09 <br>
+🙌 https://github.com/doritos0812 <br>
 
-### [1] github 주소: https://github.com/joielee09/webpage2
+### [1] github 주소: 
+https://github.com/joielee09/webpage2
+
 ### [2] 기술스택:
 - 프론트: JavaScript, React JS <br>
 - 웹백엔드(서버): JavaScript, Node JS: express를 사용. <br>
