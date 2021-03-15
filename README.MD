@@ -16,7 +16,8 @@
 - Deploy: AWS EC2 <br>
 - 커뮤니케이션 툴: git <br>
 
-### [3] 간단한 소개: 딥러닝 모델을 중심으로 실제 구현 가능하게 만든 프로젝트의 End-to-End 프로젝트 플랫폼입니다. 딥러닝 종류별로 카테고리화해서 Computer Vision, NLP, Recommendation System, 기타로 구성되어 있습니다. <br>
+### [3] 간단한 소개: 
+딥러닝 모델을 중심으로 실제 구현 가능하게 만든 프로젝트의 End-to-End 프로젝트 플랫폼입니다. 딥러닝 종류별로 카테고리화해서 Computer Vision, NLP, Recommendation System, 기타로 구성되어 있습니다. <br>
 
 ### [4] 기본기능(데모영상):
 
