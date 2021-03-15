@@ -2,9 +2,9 @@
 
 ![12](https://user-images.githubusercontent.com/67178982/111092523-a45c9500-8579-11eb-8e5a-f8423ca24d38.PNG)
 
-coworking with...
-🙌 https://github.com/joielee09 <br>
-🙌 https://github.com/doritos0812 <br>
+🙌coworking with...🙌 <br>
+https://github.com/joielee09 <br>
+https://github.com/doritos0812 <br>
 
 ### [1] github 주소: 
 https://github.com/joielee09/webpage2
