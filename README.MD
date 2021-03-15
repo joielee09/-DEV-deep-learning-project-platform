@@ -33,9 +33,9 @@ CV의 프로젝트 중 이미지를 분류하는 프로젝트입니다. transfor
 영화 정보를 받아 content-based 추천방식으로 관련된 영화를 추천해주는 영화 추천 프로젝트입니다.
 
 
-### 사용 언어: Python, JavaScript, React
+### [5] 사용 언어: Python, JavaScript, React
 
-### 폴더구조:
+### [6] 폴더구조:
 ![tree](https://user-images.githubusercontent.com/67178982/111092725-3369ad00-857a-11eb-93d4-d736fe8e5206.png)
 
 /client: 프론트 코드 파일 <br>
@@ -54,7 +54,7 @@ CV의 프로젝트 중 이미지를 분류하는 프로젝트입니다. transfor
 /server/views: ejs view engine이 포함된 폴더 <br>
 /webpack: 웹팩 파일이 포함된 폴더 <br>
 
-### 실행 시나리오
+### [7] 실행 시나리오
 설치 : <br>
 $ git clone https://github.com/joielee09/webpage2.git <br>
 $ cd ./webpage2 <br>
@@ -65,10 +65,9 @@ This will create create two files: `index.js` in `server/public/js` and `server.
 $ npm run start <br>
 run on http://localhost:5001 <br>
 
-### Architecture
+### [8] Architecture
 ![Group 7](https://user-images.githubusercontent.com/67178982/111092921-d28ea480-857a-11eb-9714-ee8584a00216.png)
 
-
-##### BasedOn
+##### [9] BasedOn
 - boilerplate: https://github.com/tahnik/react-expressjs
 - image classification pipeline: https://github.com/ndb796/CNN-based-Celebrity-Classification-AI-Service-Using-Transfer-Learning
