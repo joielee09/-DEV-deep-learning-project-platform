@@ -27,9 +27,10 @@ https://github.com/joielee09/webpage2
 
 ### [4] 기본기능(데모영상):
 
-- https://user-images.githubusercontent.com/67178982/111092954-ea662880-857a-11eb-8786-82f31fdf33d0.mp4
+- 
+https://user-images.githubusercontent.com/67178982/111093508-7b89cf00-857c-11eb-8ece-fe6affbfc667.mp4 <br>
 CV의 프로젝트 중 이미지를 분류하는 프로젝트입니다. transform 학습방법을 이용해 주어진 이미지를 강아지, 고양이, 다람쥐로 분류합니다.
-- https://user-images.githubusercontent.com/67178982/111093104-6b252480-857b-11eb-9905-364dc70a619a.mp4
+- https://user-images.githubusercontent.com/67178982/111093104-6b252480-857b-11eb-9905-364dc70a619a.mp4 <br>
 영화 정보를 받아 content-based 추천방식으로 관련된 영화를 추천해주는 영화 추천 프로젝트입니다.
 
 
