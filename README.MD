@@ -11,7 +11,7 @@ https://github.com/joielee09/webpage2
 
 ### [2] 기술스택:
 - 프론트: JavaScript, React JS <br>
-- 웹백엔드(서버): JavaScript, Node JS: express를 사용. <br>
+- 웹백엔드(서버): JavaScript, Node JS: express를 사용. SSR(구현중) <br>
 - 모델 백엔드(서버): Python, Flask (Flask-ngrok): python 기반으로 데이터 분석 및 머신러닝/딥러닝 모델을 작성. python 언어 중 flask를 사용해서 서버를 구축하고 ngrok을 통해 외부와 통신하는 포트를 엶. <br>
 
 - 통신: axios: axios post를 사용해 웹 프론트와 학습모델을 가진 GPU EC2 사이의 통신으로 모델을 이용함. <br>
