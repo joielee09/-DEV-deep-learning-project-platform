@@ -68,6 +68,6 @@ run on http://localhost:5001 <br>
 ### [8] Architecture
 ![Group 7](https://user-images.githubusercontent.com/67178982/111092921-d28ea480-857a-11eb-9714-ee8584a00216.png)
 
-##### [9] BasedOn
+##### BasedOn
 - boilerplate: https://github.com/tahnik/react-expressjs
 - image classification pipeline: https://github.com/ndb796/CNN-based-Celebrity-Classification-AI-Service-Using-Transfer-Learning
