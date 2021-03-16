@@ -20,6 +20,7 @@ https://github.com/joielee09/webpage2
 - CI/CD: travis(예정) <br>
 - Build: webpack, babel("babel/preset-env",, "babel/preset-react") <br>
 - Deploy: AWS EC2 <br>
+- Test: Jest
 - 커뮤니케이션 툴: git <br>
 
 ### [3] 간단한 소개: 
