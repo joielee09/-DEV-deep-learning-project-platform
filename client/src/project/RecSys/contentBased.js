@@ -78,7 +78,7 @@ const ContentBasedMoiveRecommend = () => {
 
     const data = { title: value, year: year };
     axios.post(
-      'http://8496bd8a5fe1.ngrok.io/post',
+      'http://ec2-15-165-204-65.ap-northeast-2.compute.amazonaws.com/contentbasedMovieRec',
       data,
       { headers: { 'Content-Type': 'application/json' } },
     )
@@ -114,7 +114,7 @@ const ContentBasedMoiveRecommend = () => {
         />
       </form>
       <span>입력 규칙: 글자시작은 대문자, 띄어쓰기, 개봉연도 입력</span><br/>
-      <span>입력예시: Toy Story 1997, Monsters, Inc. 2001, No Game No Life: Zero 2017 </span>
+      <span>입력예시: Toy Story 1995, Monsters, Inc. 2001, No Game No Life: Zero 2017 </span>
       <div className="renderMovie" style={{ display:'flex', justifyContent: 'space-around' }}>
         <img className="movieImg1" src={img1} alt="movie image" width="200px" height="300px" />
         <img className="movieImg2" src={img2} alt="movie image" width="200px" height="300px" />

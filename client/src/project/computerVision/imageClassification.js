@@ -32,7 +32,7 @@ const ListItemPreview = () => {
     e.preventDefault();
     const data = { imageFile: base_64 };
     axios.post(
-      'http://5ff4d1c3c5c6.ngrok.io/post',
+      'http://ec2-15-165-204-65.ap-northeast-2.compute.amazonaws.com/imageCls',
       data,
       { headers: {  'Content-Type': 'multipart/form-data',  },  },
     )
@@ -49,6 +49,7 @@ const ListItemPreview = () => {
     blob = URL.createObjectURL(file);
     setImg(URL.createObjectURL(file));
     setResImg('https://e7.pngegg.com/pngimages/552/1016/png-clipart-black-and-gray-robot-illustration-robotics-fractal-foreign-exchange-market-artificial-intelligence-tech-robot-material-electronics-computer-wallpaper-thumbnail.png')
+    setResComment('')
     // setResImg('https://culturacion.com/wp-content/uploads/2018/12/redes-neuronales-1280x720.jpg');
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file); // file equals blob
