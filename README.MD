@@ -8,8 +8,8 @@ https://github.com/doritos0812 <br>
 https://github.com/atica57 <br>
 
 ### [1] github 주소: 
-Web Develop: https://github.com/joielee09/webpage2
-Python Server: https://github.com/joielee09/deep-learning-project-platform-pythonserver.git
+Web Develop: https://github.com/joielee09/webpage2<br>
+Python Server: https://github.com/joielee09/deep-learning-project-platform-pythonserver.git<br>
 
 ### [2] 기술스택:
 - 프론트: JavaScript, React JS <br>
