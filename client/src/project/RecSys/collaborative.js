@@ -10,7 +10,7 @@ const request = axios.create({
   },
 });
 
-const ContentBasedMoiveRecommend = () => {
+const CollaborativeMoiveRecommend = () => {
   const [value, setValue] = useState('');
   const [year, setYear] = useState('');
   const [img1, setImg1] = useState('https://cdn.univcoop.kr/static/theme/image/no-image.svg');
@@ -78,7 +78,7 @@ const ContentBasedMoiveRecommend = () => {
 
     const data = { title: value, year: year };
     axios.post(
-      'http://e8d9d4d25b9d.ngrok.io/post',
+      'http://5b14e5c2e64b.ngrok.io/post',
       data,
       { headers: { 'Content-Type': 'application/json' } },
     )
@@ -91,7 +91,7 @@ const ContentBasedMoiveRecommend = () => {
   };
 
   return (
-    <div className="contentBasedMovie">
+    <div className="collaborativeMovie">
       <form method="POST" action="/" encType="text/plain" style={{ marginBottom:'40px' }}>
         <input
           type="text"
@@ -125,4 +125,4 @@ const ContentBasedMoiveRecommend = () => {
   );
 };
 
-export default ContentBasedMoiveRecommend;
+export default CollaborativeMoiveRecommend;
