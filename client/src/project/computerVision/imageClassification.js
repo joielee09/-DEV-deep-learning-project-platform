@@ -32,7 +32,7 @@ const ListItemPreview = () => {
     e.preventDefault();
     const data = { imageFile: base_64 };
     axios.post(
-      'http://ec2-15-165-204-65.ap-northeast-2.compute.amazonaws.com/imageCls',
+      'http://ec2-3-35-37-166.ap-northeast-2.compute.amazonaws.com/imageCls',
       data,
       { headers: {  'Content-Type': 'multipart/form-data',  },  },
     )

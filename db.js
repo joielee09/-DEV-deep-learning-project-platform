@@ -10,16 +10,23 @@ export const projects = {
     },
     {
       id: 102,
-      title: 'Visual tracking system',
-      description: 'A visual tracking system is designed to track and locate moving object(s) in a given time frame via a camera. It is a handy tool that has numerous applications such as security and surveillance, medical imaging, augmented reality, traffic control, video editing and communication, and human-computer interaction.',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuBwpBtUd92t-S1fTn0pFTRI_z3UMF1AkFKA&usqp=CAU',
-      component: 'catDog'
+      title: 'Style Transfer',
+      description: 'Transfers two pictures into one stylish picture.',
+      image: 'https://blog.kakaocdn.net/dn/cx9oYX/btqzvJDmJT0/uKjE0sSf3sAkd6LfHmicr0/img.jpg',
+      component: 'styleTransfer'
     },
     {
       id: 103,
       title: 'Face detection system',
       description: 'This is one of the excellent deep learning project ideas for beginners. With the advance of deep learning, facial recognition technology has also advanced tremendously.',
       image: 'https://i.ytimg.com/vi/98Q-DgVxBr4/hqdefault.jpg',
+      component: 'catDog'
+    },
+    {
+      id: 104,
+      title: 'Visual tracking system',
+      description: 'A visual tracking system is designed to track and locate moving object(s) in a given time frame via a camera. It is a handy tool that has numerous applications such as security and surveillance, medical imaging, augmented reality, traffic control, video editing and communication, and human-computer interaction.',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuBwpBtUd92t-S1fTn0pFTRI_z3UMF1AkFKA&usqp=CAU',
       component: 'catDog'
     },
   ],
