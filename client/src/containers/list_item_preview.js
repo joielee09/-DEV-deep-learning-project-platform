@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import ListItemPreview from '../components/list_item_preview';
+// import ListItemPreview from '../components/list_item_preview';
+import DetailedPage from '../components/detailedPage';
 
 /*
  This is a redux specific function.
@@ -17,4 +18,4 @@ function mapStateToProps(state) {
  Here we are creating a Higher order component
  https://facebook.github.io/react/docs/higher-order-components.html
  */
-export default connect(mapStateToProps)(ListItemPreview);
+export default connect(mapStateToProps)(DetailedPage);

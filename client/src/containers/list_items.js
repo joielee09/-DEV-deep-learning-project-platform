@@ -8,17 +8,23 @@ For example, here we are retrieving the list of items from the redux store.
 Whenever this list changes, any component that is using this list of item will re-render.
  */
 const mapStateToProps = state => ({
-  listItems: state.list.items,
+  listItems: state,
 });
+// const mapStateToProps = state => ({
+//   state: state,
+// });
 
 /*
 This is a redux specific function.
 http://redux.js.org/docs/api/bindActionCreators.html
  */
+// const mapDispatchToProps = dispatch => ({
+//   previewItem: (name) => {
+//     dispatch(previewItem(name));
+//   },
+// });
 const mapDispatchToProps = dispatch => ({
-  previewItem: (name) => {
-    dispatch(previewItem(name));
-  },
+  dispatch: dispatch
 });
 
 
