@@ -56,6 +56,13 @@ export const projects = {
       image: 'https://data-flair.training/blogs/wp-content/uploads/sites/2/2019/07/recommendation-system-project-in-R.png',
       component: 'catDog'
     },
+    {
+      id: 303,
+      title: 'movie recommendation(collaborative)',
+      description: 'recommendation systems (RS) are the systems that are used for recommendation purposes. These recommendations can be anything from articles, blogs to different products.',
+      image: 'https://analyticsindiamag.com/wp-content/uploads/2020/08/stars-movies-1200x670-1.jpg',
+      component: 'collaborativeMovie'
+    },
     
   ],
 

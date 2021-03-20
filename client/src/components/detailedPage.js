@@ -3,6 +3,7 @@ import { projects } from '../../../db.js';
 
 import ImageProject from '../project/computerVision/imageClassification';
 import ContentBasedMoiveRecommend from '../project/RecSys/contentBased';
+import CollaborativeMoiveRecommend from '../project/RecSys/collaborative';
 
 const DetailedPage = (params) => {
 
@@ -15,6 +16,7 @@ const DetailedPage = (params) => {
   const handleComponent = (param) => {
     if (param === 'imageClassification') return <ImageProject />;
     if (param === 'contentBasedMovie') return <ContentBasedMoiveRecommend />;
+    if (param === 'collaborativeMovie') return <CollaborativeMoiveRecommend />;
     else return <img src={"https://cdn.aitimes.kr/news/photo/202002/15296_16544_4827.jpg"} width="700px" />
   };
 
