@@ -2,8 +2,8 @@ const mysql = require('mysql');
 const { func } = require('prop-types');
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
+  host: 'database-1.cso5uhd7wven.ap-northeast-2.rds.amazonaws.com',
+  user: 'admin',
   password: 'qpio9023',
   port: 3306,
   database:'dpp',
@@ -14,7 +14,7 @@ const getAllProjects = () => {
     function (resolve, reject) {
       connection.query(
         // sql
-        `SELECT * FROM PROJECTS ORDER BY ID DESC`,
+        `SELECT * FROM PROJECT ORDER BY ID DESC`,
         // function
         function (err, rows, field) {
           if (err) throw err;

@@ -16,6 +16,12 @@ export default (state = PROJECTS, action) => {
       const returnVal = { ...state, items: nextItems };
       return returnVal;
     }
+    case LIST_ACTIONS.ITEM_RENDER: 
+      console.log("action: ", action);
+      console.log("state: ", state);
+      state = action.item;
+      console.log("after state: ", state);
+      return state ;
     default:
       return state;
   }

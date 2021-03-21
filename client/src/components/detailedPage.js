@@ -3,26 +3,25 @@ import { connect } from 'react-redux';
 import ListItemPreview from './list_item_preview';
 import { projects } from '../../../db.js';
 import { Link } from 'react-router-dom';
+import store from '../reducers/list';
 
 import ImageProject from '../project/computerVision/imageClassification';
 import ContentBasedMoiveRecommend from '../project/RecSys/contentBased';
-<<<<<<< HEAD
 import CollaborativeMoiveRecommend from '../project/RecSys/collaborative';
-=======
 import StyleTransfer from '../project/computerVision/styletransfer';
->>>>>>> 0fa8323... setting database
 
 // data from databse
-let res;
-const mapStateToProps = (state) => {
-  res = state.list;
-  return {
-    item: state.list,
-  };
-}
+// let res;
+// const mapStateToProps = (state) => {
+//   res = state.list;
+//   return state.list;
+// }
   
 const DetailedPage = (params) => {
-  
+  console.log("detailed page rendered")
+  // console.log("states from ssr in detailed Page: ", res);
+  // console.log("getState: ", store.getState());
+
   const category = params.match.params.name;
   const cat_id = params.match.params.id;
   const project_ = projects[category].filter(cur => parseInt(cur.id) === parseInt(cat_id));
@@ -41,6 +40,10 @@ const DetailedPage = (params) => {
 
   }
 
+  const postUpdate = (id) => {
+
+  }
+
   const onClickHandler = (e) => {
     // alert to make sure delete
     // e.preventDefault();
@@ -51,24 +54,28 @@ const DetailedPage = (params) => {
     <div className="detailed" style={{ padding: '100px', paddingTop: '20px' }}>
       {/* Project Title */}
       {/* <h2>{`Project Name: ${project.title}`}</h2> */}
-      <h2>{`Project Name: ${res.title}`}</h2>
-      
+      {/* <h2>{`Project Name: ${res.title}`}</h2> */}
+
       {/* 비밀번호로 접근권한 제어 */}
+      <div className="update delete component" style={{
+        display: "flex", flexDirection: "row", flexWrap: 
+    "wrap" }} >
       <Link to="/updateProject">
         <button
           type="button"
           className="btn btn-primary"
-          style={{ position:"absolute", right:"10px", top:"10px", width:"100px", height:"50px" }}
+          style={{ marginBottom:"20px", marginRight:"20px" }}
         >UPDATE</button>
       </Link>
       <form method="post" action="/" encType="Content-Type: application/x-www-form-urlencoded" >
         <button type="submit" onClick={e=>onClickHandler(e)} >DELETE</button>
       </form>
-      
+
       {/* Project: get the component path */}
       <div className="projectContainer" style={{ padding: '70px' }}>
         {handleComponent(project.component)}
-      </div>
+        </div>
+        </div>
 
       {/* Summary */}
 
@@ -91,5 +98,19 @@ const DetailedPage = (params) => {
   );
 };
 
+const stateToProps = (state) => {
+  return {
+    id: state.id,
+    category: state.category,
+    title: state.title,
+    author: state.author,
+    passowrd: state.password,
+    view_count: 14,
+    like_count: 3,
+    description: state.description,
+    image: state.image
+  }
+}
+
 // export default DetailedPage;
-export default connect(mapStateToProps)(DetailedPage);
+export default connect(stateToProps)(DetailedPage);

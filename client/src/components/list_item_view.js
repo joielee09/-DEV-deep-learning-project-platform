@@ -6,6 +6,7 @@ import {
 } from '../../../db.js';
 
 const ListItemView = (params) => {
+  console.log("list item view rendered")
   const { name } = params.match.params;
   const data = projects[name];
 

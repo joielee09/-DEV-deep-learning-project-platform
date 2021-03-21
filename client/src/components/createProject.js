@@ -1,10 +1,15 @@
 
 import React, { useState } from 'react';
+import Dropdown from 'react-dropdown';
 
 const createProject = () => {
-  const [id_number, setId_number] = useState('');
+
+  const options = [
+  'CV', 'NLP', 'RecSys', 'ETC'
+  ];
+  const [Opt, setOpt] = useState(options[0]);
   const [title, setTitle] = useState('');
-  const [writer, setWriter] = useState('');
+  const [author, setAuthor] = useState('');
   const [password, setPassword] = useState('');
   const [desc, setDesc] = useState('');
 
@@ -17,34 +22,33 @@ const createProject = () => {
     <div className="createProject">
       <h1>create project</h1>
       <form method="post" action="/" encType="Content-Type: application/x-www-form-urlencoded">
-        <input
-          type="number"
-          name="id_number"
-          value={id_number}
-          onChange={e => setId_number(e.target.value)}
-          placeholder="(dev) 프로젝트"
-        />
+        <div className="project information" style={{ height:"80px" }} >
+        <Dropdown options={options} onChange={setOpt} name="category" value={Opt} placeholder="Select an option" />
         <input
           type="text"
           name="title"
           value={title}
           onChange={e => setTitle(e.target.value)}
           placeholder="프로젝트 제목을 입력하세요"
-        />
+        /><br />
         <input
           type="text"
-          name="writer"
-          value={writer}
-          onChange={e => setWriter(e.target.value)}
+          name="author"
+          value={author}
+          onChange={e => setAuthor(e.target.value)}
           placeholder="작성자 이름(예. 이재영T_1250)"
-        />
+        /><br />
         <input
           type="password"
           name="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
           placeholder="비밀번호를 입력하세요"
-        />
+          /><br />
+          {/* like_count */}
+        <input type="submit" value="올리기" onClick={e => onClickhandler(e)} />
+        </div>
+        <br /><br />
         <textarea
           name="description"
           cols="50px"
@@ -52,9 +56,7 @@ const createProject = () => {
           value={desc}
           onChange={e => setDesc(e.target.value)}
         />
-        <input type="submit" value="올리기" onClick={e=>onClickhandler(e)} />
       </form>
-      {/* <button type="submit">submit</button> */}
     </div>
   );
 };

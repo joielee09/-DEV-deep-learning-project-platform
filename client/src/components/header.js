@@ -17,7 +17,7 @@ const Header = () => {
         <button
           type="button"
           className="btn btn-primary"
-          style={{ position:"absolute", right:"120px", top:"10px", width:"100px", height:"50px" }}
+          style={{ position:"absolute", right:"10px", top:"10px", width:"100px", height:"50px" }}
         >CREATE PROJECT</button>
       </Link>
 
