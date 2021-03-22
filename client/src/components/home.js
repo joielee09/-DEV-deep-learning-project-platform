@@ -5,8 +5,7 @@ import React from 'react';
 
 const Home = () => (
   <div className="home">
-    {/* <ListItems />
-    <ListItemPreview /> */}
+    <h1>This is Landing/Home page</h1>
   </div>
 );
 

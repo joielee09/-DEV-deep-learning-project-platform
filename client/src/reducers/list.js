@@ -1,28 +1,30 @@
-import { LIST_ACTIONS } from '../consts/action_types';
-import { PROJECTS } from '../consts/default_state';
+import { createStore } from "redux";
 
-export default (state = PROJECTS, action) => {
+const initState = {
+  id: '1',
+  category: 'CV',
+  title: 'cat or dog222',
+  author: 'jaeyoung',
+  password: 'asdf',
+  view_count: '47',
+  like_count: '12',
+  description: 'this is default value from redux!!',
+  image:'https://images.mypetlife.co.kr/content/uploads/2019/09/04222847/dog-panting-1024x683.jpg',
+}
+
+const Reducer = (state = initState, action) => {
   switch (action.type) {
-    case LIST_ACTIONS.ITEM_PREVIEW:
-      return { ...state, itemPreview: state.items[action.name.toUpperCase()] };
-    case LIST_ACTIONS.ITEM_VIEW:
-      return { ...state, itemView: state.items[action.name.toUpperCase()] };
-    case LIST_ACTIONS.ITEM_CLEAR:
-      return { ...state, itemView: null };
-    case LIST_ACTIONS.ITEM_ADD: {
-      const nextItems = { ...state.items };
-      const itemToAdd = action.item;
-      nextItems[itemToAdd.name.toUpperCase()] = itemToAdd;
-      const returnVal = { ...state, items: nextItems };
-      return returnVal;
-    }
-    case LIST_ACTIONS.ITEM_RENDER: 
-      console.log("action: ", action);
-      console.log("state: ", state);
+    case 'ITEM_RENDER':
+      console.log("item rendered in reducer!");
+      // console.log("action: ", action);
+      // console.log("state: ", state);
       state = action.item;
-      console.log("after state: ", state);
+      console.log("dispatch state", state)
+      // console.log("after state: ", state);
       return state ;
     default:
       return state;
   }
 };
+
+export const store = createStore(Reducer)

@@ -9,6 +9,11 @@ const Header = () => {
     'ETC',
   ];
   const [value, setValue] = useState('');
+
+  const onIncrementAsync = () => {
+
+  }
+
   return (
     <div style={{ marginTop: 50 }} className="header">
       {/* Join, Login */}

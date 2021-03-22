@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import ListItemPreview from './list_item_preview';
 import { projects } from '../../../db.js';
 import { Link } from 'react-router-dom';
-import store from '../reducers/list';
+import { store } from '../reducers/list';
+
 
 import ImageProject from '../project/computerVision/imageClassification';
 import ContentBasedMoiveRecommend from '../project/RecSys/contentBased';
@@ -16,16 +17,18 @@ import StyleTransfer from '../project/computerVision/styletransfer';
 //   res = state.list;
 //   return state.list;
 // }
-  
+
+
 const DetailedPage = (params) => {
+
   console.log("detailed page rendered")
   // console.log("states from ssr in detailed Page: ", res);
   // console.log("getState: ", store.getState());
 
-  const category = params.match.params.name;
-  const cat_id = params.match.params.id;
-  const project_ = projects[category].filter(cur => parseInt(cur.id) === parseInt(cat_id));
-  const project = project_[0];
+  const category = params ? params.match.params.name : '';
+  const cat_id = params ? params.match.params.id : '';
+  const project_ = params ? projects[category].filter(cur => parseInt(cur.id) === parseInt(cat_id)) : '';
+  const project = params ? project_[0]: '';
 
   // dynamic importing
   const handleComponent = (param) => {
@@ -50,11 +53,18 @@ const DetailedPage = (params) => {
     // postDelete(current_project_id);
   }
 
+  const handleSaga = () => {
+    const res = store.getState();
+    console.log("res: ", res);
+  }
+
   return (
     <div className="detailed" style={{ padding: '100px', paddingTop: '20px' }}>
       {/* Project Title */}
       {/* <h2>{`Project Name: ${project.title}`}</h2> */}
       {/* <h2>{`Project Name: ${res.title}`}</h2> */}
+
+      <button onClick={handleSaga} >REDUX SAGA</button>
 
       {/* 비밀번호로 접근권한 제어 */}
       <div className="update delete component" style={{
@@ -98,19 +108,14 @@ const DetailedPage = (params) => {
   );
 };
 
-const stateToProps = (state) => {
-  return {
-    id: state.id,
-    category: state.category,
-    title: state.title,
-    author: state.author,
-    passowrd: state.password,
-    view_count: 14,
-    like_count: 3,
-    description: state.description,
-    image: state.image
-  }
-}
+const mapStateToProps = state => ({
+  listItems: state,
+});
+
+const mapDispatchToProps = dispatch => ({
+  dispatch: dispatch
+});
 
 // export default DetailedPage;
-export default connect(stateToProps)(DetailedPage);
+// export default connect(DetailedPage);
+export default connect(mapStateToProps, mapDispatchToProps)(DetailedPage);

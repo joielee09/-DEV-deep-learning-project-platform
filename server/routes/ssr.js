@@ -4,24 +4,26 @@ import ReactDOMServer from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router';
-import reducers from '../../client/src/reducers/index';
+import { store } from '../../client/src/reducers/list';
 import { LIST_ACTIONS } from '../../client/src/consts/action_types';
 import App from '../../client/src/app';
 import dbs from '../../dbs';
 
 const router = express.Router();
-const store = createStore(reducers); 
 
 console.log("ssr rendered")
 
 
-router.post('/', async (req, res) => {
+router.post('/*', async (req, res) => {
+
   console.log("ssr post rendered")
   const context = {};
-  const finalState = {'title': 'happy kitten'}
+  const finalState = { 'title': 'happy kitten' }
+  // const store = createStore(reducers);
+  const store_ = store;
 
   const html = ReactDOMServer.renderToString(
-    <Provider store={store}>
+    <Provider store={store_}>
       <StaticRouter
         location={req.originalUrl}
         context={context}
@@ -78,11 +80,39 @@ router.post('/', async (req, res) => {
 
 router.get('/*', async (req, res) => {
   console.log("ssr get rendered")
-
+  // const store = createStore(reducers);
+  const store_ = store;
   const context = {};
 
+  const address = JSON.parse(JSON.stringify(req.headers)).referer;
+  // Read Project from DB
+  const category = address ? address.slice(22, 26) : '';
+  const projectId = address ? address.slice(30, 33) : '';
+  // console.log('category: ', category, 'projectId: ', projectId);
+
+  const finalState = await dbs.getAllProjects()
+    .then((results) => {
+      let result;
+      results.map((cur) => {
+        if (cur.ID === parseInt(Math.random() * 4) + 1) {
+          result = JSON.stringify(cur);
+          console.log('result: ', result);
+        }
+      });
+      return result;
+    })
+    .catch((error) => {
+      console.log('error: ', error);
+    });
+  
+  console.log('finalState: ', finalState);
+  store_.dispatch({
+    type: 'ITEM_RENDER',
+    item: finalState,
+  });
+
   const html = ReactDOMServer.renderToString(
-    <Provider store={store}>
+    <Provider store={store_}>
       <StaticRouter
         location={req.originalUrl}
         context={context}
@@ -91,51 +121,6 @@ router.get('/*', async (req, res) => {
       </StaticRouter>
     </Provider>,
   );
-
-  const address = JSON.parse(JSON.stringify(req.headers)).referer;
-  // console.log("address: ", address, typeof (address));
-
-  // Read Project from DB
-  const category = address ? address.slice(22, 26) : '';
-  const projectId = address ? address.slice(30, 33) : '';
-  // console.log('category: ', category, 'projectId: ', projectId);
-
-  // const finalState = { 'title': 'cat' };
-  // const finalState = await dbs.getAllProjects()
-  //   .then((results) => {
-  //     let result;
-  //     results.map((cur) => {
-  //       if (cur.ID === parseInt(Math.random() * 6) + 1) {
-  //         result = JSON.stringify(cur);
-  //         // console.log('result: ', result);
-  //       }
-  //     });
-  //     return result;
-  //   })
-  //   .catch((error) => {
-  //     console.log('error: ', error);
-  //   });
-
-  const finalState = {'title': 'happy puppy'}
-  // const finalState = store.getState();
-  // console.log('finalState: ', finalState);
-  // const tmpState = JSON.parse(finalState);
-  // store.dispatch({
-  //   type: LIST_ACTIONS.ITEM_RENDER,
-  //   item: {
-  //     id: tmpState.ID,
-  //     category: tmpState.CATEGORY,
-  //     title: tmpState.TITLE,
-  //     author: tmpState.AUTHOR,
-  //     passowrd: tmpState.PASSWORD,
-  //     view_count: 14,
-  //     like_count: 3,
-  //     description: tmpState.DESCRIPTION,
-  //     image: tmpState.IMAGE,
-  //   },
-  // });
-
-
 
   if (context.url) {
     res.writeHead(301, {
