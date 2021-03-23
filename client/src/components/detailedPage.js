@@ -28,10 +28,11 @@ const DetailedPage = (params) => {
   const cat_id = params ? params.match.params.id : '';
   const project_ = params ? projects[category].filter(cur => parseInt(cur.id) === parseInt(cat_id)) : '';
   const project = params ? project_[0] : '';
-  
+  const [result, setResult] = useState();
   console.log("detailed page rendered")
   
-  const getDate = () => {
+  const getData = () => {
+    let axiosRes;
     const data = { id: cat_id };
     axios.post('http://localhost:5001/view/NLP/5',
       data,
@@ -39,15 +40,17 @@ const DetailedPage = (params) => {
     )
       .then((res) => {
         const len = res.data.length;
-      console.log("res from axios: ", res.data.slice(2990,parseInt(len-71)));
+        // console.log(JSON.parse( res.data.slice(2997, parseInt(len - 74)) ));
+      setResult(JSON.parse( res.data.slice(2997, parseInt(len - 74)) ));
+      // console.log("res from axios: ", res.data.slice(2997, parseInt(len - 74)));
     })
-    .catch((error)=>console.log(error))
+      .catch((error) => console.log(error))
+    return axiosRes;
   }
 
   useEffect(() => {
-    getDate();
+    getData();
   }, [])
-  
 
   // dynamic importing
   const handleComponent = (param) => {
@@ -82,7 +85,6 @@ const DetailedPage = (params) => {
       {/* Project Title */}
       {/* <h2>{`Project Name: ${project.title}`}</h2> */}
       {/* <h2>{`Project Name: ${res.title}`}</h2> */}
-
       <button onClick={handleSaga} >REDUX SAGA</button>
 
       {/* 비밀번호로 접근권한 제어 */}
