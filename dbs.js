@@ -9,6 +9,23 @@ const connection = mysql.createConnection({
   database:'dpp',
 })
 
+const getOneProjects = (id) => {
+  return new Promise(
+    function (resolve, reject) {
+      connection.query(
+        // sql
+        `SELECT * FROM PROJECT WHERE ID=${id}`,
+        // function
+        function (err, rows, field) {
+          if (err) throw err;
+          resolve(rows);
+        }
+      );
+    },
+  )
+};
+
+
 const getAllProjects = () => {
   return new Promise(
     function (resolve, reject) {
@@ -73,5 +90,6 @@ module.exports = {
   getAllProjects,
   makeProjects,
   deleteProject,
-  updateProject
+  updateProject,
+  getOneProjects
 }

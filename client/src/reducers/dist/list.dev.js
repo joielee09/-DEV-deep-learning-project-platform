@@ -25,11 +25,11 @@ var Reducer = function Reducer() {
 
   switch (action.type) {
     case 'ITEM_RENDER':
-      console.log("item rendered in reducer!"); // console.log("action: ", action);
+      // console.log("item rendered in reducer!");
+      // console.log("action: ", action);
       // console.log("state: ", state);
-
-      state = action.item;
-      console.log("dispatch state", state); // console.log("after state: ", state);
+      state = action.item; // console.log("dispatch state", state)
+      // console.log("after state: ", state);
 
       return state;
 

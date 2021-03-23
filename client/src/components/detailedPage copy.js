@@ -11,7 +11,6 @@ import ContentBasedMoiveRecommend from '../project/RecSys/contentBased';
 import CollaborativeMoiveRecommend from '../project/RecSys/collaborative';
 import StyleTransfer from '../project/computerVision/styletransfer';
 import axios from 'axios';
-import FormData from 'form-data';
 
 // data from databse
 // let res;
@@ -24,26 +23,31 @@ import FormData from 'form-data';
 const DetailedPage = (params) => {
 
 
-  const category = params ? params.match.params.name : '';
-  const cat_id = params ? params.match.params.id : '';
-  const project_ = params ? projects[category].filter(cur => parseInt(cur.id) === parseInt(cat_id)) : '';
-  const project = params ? project_[0] : '';
+  const category = params.match.params.name;
+  const cat_id = params.match.params.id;
+  const project_ = projects[category].filter(cur => parseInt(cur.id) === parseInt(cat_id));
+  const project = project_[0] ;
   
+  console.log("id: " cat_id);
   console.log("detailed page rendered")
   // console.log("states from ssr in detailed Page: ", res);
   // console.log("getState: ", store.getState());
 
-  console.log("id:: ", cat_id);
-  
+  const data = JSON.stringify({"id" : cat_id});
   // const data = JSON.stringify({ "title": "body data from detailed page" });
 
-  
   const getDate = () => {
-    const data = { id: cat_id };
-    axios.post('http://localhost:5001/view/NLP/5',
-      data,
-      { headers: {  'Content-Type': 'application/json',  }, },
-    )
+    axios('http://localhost:5001/view/NLP/5', {
+      method: 'POST',
+      data: cat_id
+      headers: {
+          "Content-type": "application/json",
+          "Accept": "application/json"
+        // 'Accept': 'application/json',
+        // // "content-type": "application/json",
+        'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      }
+    })
     .then((res) => {
       console.log("res from axios: ", res);
     })

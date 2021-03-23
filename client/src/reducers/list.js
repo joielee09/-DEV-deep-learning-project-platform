@@ -15,11 +15,11 @@ const initState = {
 const Reducer = (state = initState, action) => {
   switch (action.type) {
     case 'ITEM_RENDER':
-      console.log("item rendered in reducer!");
+      // console.log("item rendered in reducer!");
       // console.log("action: ", action);
       // console.log("state: ", state);
       state = action.item;
-      console.log("dispatch state", state)
+      // console.log("dispatch state", state)
       // console.log("after state: ", state);
       return state ;
     default:

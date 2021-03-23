@@ -6,15 +6,20 @@ import { connect } from "react-redux";
 import { BrowserRouter } from 'react-router-dom';
 import { AppContainer } from 'react-hot-loader';
 import { store } from './reducers/list';
-// import { store } from './reducers/list';
 import App from './app';
+import { Reducer } from './reducers/list';
 
 /*
 Here we are getting the initial state injected by the server. See routes/index.js for more details
 */
 const initialState = window.__INITIAL_STATE__; // eslint-disable-line
 console.log("initial State: ", initialState)
-// export const store = createStore(reducers, initialState);
+// export const store__ = createStore(Reducer, initialState);
+const res_ = store.dispatch({
+  type: 'ITEM_RENDER',
+  item: initialState
+})
+console.log("dispatch in src/index.js: ",res_);
 
 /*
 While creating a store, we will inject the initial state we received from the server to our app.
@@ -38,7 +43,7 @@ const render = (Component) => {
 };
 
 render(App);
-store.subscribe(render);
+// store.subscribe(render);
 // store.connect(render);
 
 // const mapDispatchToProps = ( dispatch ) => {
