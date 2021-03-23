@@ -28,7 +28,17 @@ const DetailedPage = (params) => {
   const cat_id = params ? params.match.params.id : '';
   const project_ = params ? projects[category].filter(cur => parseInt(cur.id) === parseInt(cat_id)) : '';
   const project = params ? project_[0] : '';
-  const [result, setResult] = useState();
+  const [result, setResult] = useState({
+  ID: '1',
+  CATEGORY: 'CV',
+  TITLE: 'cat or dog222',
+  AUTHOR: 'jaeyoung',
+  PASSWORD: 'asdf',
+  VIEW_COUNT: '47',
+  LIKE_COUNT: '12',
+  DESCRIPTION: 'this is default value from redux!!',
+  IMAGE:'https://images.mypetlife.co.kr/content/uploads/2019/09/04222847/dog-panting-1024x683.jpg',
+});
   console.log("detailed page rendered")
   
   const getData = () => {
@@ -40,9 +50,17 @@ const DetailedPage = (params) => {
     )
       .then((res) => {
         const len = res.data.length;
-        // console.log(JSON.parse( res.data.slice(2997, parseInt(len - 74)) ));
-      setResult(JSON.parse( res.data.slice(2997, parseInt(len - 74)) ));
-      // console.log("res from axios: ", res.data.slice(2997, parseInt(len - 74)));
+        
+        let tmp;
+        for (let i = 0; i < res.data.length; i++){
+          if (res.data.slice(i, (i + 6)) === 'window') {
+              tmp = JSON.parse(res.data.slice(i+28, parseInt(len - 74)));
+              break;
+            }
+        }
+        console.log("tmp: ", tmp);
+        setResult(tmp);
+      console.log( res.data.slice(2997, parseInt(len - 74)) );
     })
       .catch((error) => console.log(error))
     return axiosRes;
@@ -51,6 +69,7 @@ const DetailedPage = (params) => {
   useEffect(() => {
     getData();
   }, [])
+
 
   // dynamic importing
   const handleComponent = (param) => {
@@ -83,10 +102,9 @@ const DetailedPage = (params) => {
   return (
     <div className="detailed" style={{ padding: '100px', paddingTop: '20px' }}>
       {/* Project Title */}
-      {/* <h2>{`Project Name: ${project.title}`}</h2> */}
-      {/* <h2>{`Project Name: ${res.title}`}</h2> */}
-      <button onClick={handleSaga} >REDUX SAGA</button>
+      <h2>Project Name: {result.TITLE}</h2>
 
+      
       {/* 비밀번호로 접근권한 제어 */}
       <div className="update delete component" style={{
         display: "flex", flexDirection: "row", flexWrap: 
@@ -102,6 +120,8 @@ const DetailedPage = (params) => {
         <button type="submit" onClick={e=>onClickHandler(e)} >DELETE</button>
       </form>
 
+      
+        
       {/* Project: get the component path */}
       <div className="projectContainer" style={{ padding: '70px' }}>
         {handleComponent(project.component)}
@@ -111,8 +131,10 @@ const DetailedPage = (params) => {
       {/* Summary */}
 
       {/* Description */}
+      
+      
       <h3>ABOUT THIS PROJECT</h3>
-      <span>{project.description}</span>
+      <span>{result.DESCRIPTION}</span>
 
       {/* Skillset */}
       <h3>SKILLSET</h3>
