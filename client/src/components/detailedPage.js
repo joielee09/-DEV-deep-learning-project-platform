@@ -30,13 +30,6 @@ const DetailedPage = (params) => {
   const project = params ? project_[0] : '';
   
   console.log("detailed page rendered")
-  // console.log("states from ssr in detailed Page: ", res);
-  // console.log("getState: ", store.getState());
-
-  console.log("id:: ", cat_id);
-  
-  // const data = JSON.stringify({ "title": "body data from detailed page" });
-
   
   const getDate = () => {
     const data = { id: cat_id };
@@ -44,8 +37,9 @@ const DetailedPage = (params) => {
       data,
       { headers: {  'Content-Type': 'application/json',  }, },
     )
-    .then((res) => {
-      console.log("res from axios: ", res);
+      .then((res) => {
+        const len = res.data.length;
+      console.log("res from axios: ", res.data.slice(2990,parseInt(len-71)));
     })
     .catch((error)=>console.log(error))
   }

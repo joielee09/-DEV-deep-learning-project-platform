@@ -16,11 +16,11 @@ console.log("ssr rendered")
 
 router.post('/*', async (req, res) => {
 
-  console.log("ssr post rendered", req)
+  console.log("ssr post rendered")
   const context = {};
   const finalState = { 'title': 'happy kitten' }
 
-  const getOneProjectRes = await dbs.getOneProjects('31')
+  const getOneProjectRes = await dbs.getOneProjects(req.body['id'])
     .then((res) => {
       console.log("getOneProjectRes res: ", res);
       return res;
