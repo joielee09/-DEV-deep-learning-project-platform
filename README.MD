@@ -1,6 +1,6 @@
 ## Deep Learning Project Platform
 
-https://travis-ci.com/joielee09/deep-learning-project-platform.svg?branch=master
+[![Build Status](https://travis-ci.com/joielee09/deep-learning-project-platform.svg?branch=master)](https://travis-ci.com/joielee09/deep-learning-project-platform)
 
 ![12](https://user-images.githubusercontent.com/67178982/111092523-a45c9500-8579-11eb-8e5a-f8423ca24d38.PNG)
 
