@@ -2,11 +2,11 @@ const mysql = require('mysql');
 const { func } = require('prop-types');
 
 const connection = mysql.createConnection({
-  host: 'database-1.cso5uhd7wven.ap-northeast-2.rds.amazonaws.com',
-  user: 'admin',
-  password: 'qpio9023',
-  port: 3306,
-  database:'dpp',
+  host: '',
+  user: '',
+  password: '',
+  port: ,
+  database:'',
 })
 
 const getCategory = (cat_name) => {
