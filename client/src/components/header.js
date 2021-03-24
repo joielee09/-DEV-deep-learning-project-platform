@@ -9,8 +9,23 @@ const Header = () => {
     'ETC',
   ];
   const [value, setValue] = useState('');
+
+  const onIncrementAsync = () => {
+
+  }
+
   return (
     <div style={{ marginTop: 50 }} className="header">
+      {/* Join, Login */}
+
+      <Link to="/createProject">
+        <button
+          type="button"
+          className="btn btn-primary"
+          style={{ position:"absolute", right:"10px", top:"10px", width:"100px", height:"50px" }}
+        >CREATE PROJECT</button>
+      </Link>
+
       {/* Title */}
       {/* <Link to={'/'}> */}
       <h1 style={{ textDecoration: 'none' }}>Deep Learning Applications</h1>

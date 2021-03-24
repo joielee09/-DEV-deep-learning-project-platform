@@ -3,7 +3,7 @@ import { viewItem } from '../actions/list_actions';
 import ItemView from '../components/list_item_view';
 
 const mapStateToProps = state => ({
-  item: state.list.itemView,
+  item: state.list,
 });
 
 const mapDispatchToProps = dispatch => ({

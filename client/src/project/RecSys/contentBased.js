@@ -79,6 +79,7 @@ const ContentBasedMoiveRecommend = () => {
     const data = { title: value, year: year };
     axios.post(
       'http://e8d9d4d25b9d.ngrok.io/post',
+      'http://ec2-3-35-37-166.ap-northeast-2.compute.amazonaws.com/contentbasedMovieRec',
       data,
       { headers: { 'Content-Type': 'application/json' } },
     )

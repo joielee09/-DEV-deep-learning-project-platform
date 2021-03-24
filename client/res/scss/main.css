@@ -1,0 +1,141 @@
+/* Coolors Exported Palette - coolors.co/03b5aa-037971-023436-00bfb3-049a8f */
+/* HSL */
+/* RGB */
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,600|Roboto:100,300");
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&display=swap");
+.home {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.home .preview {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.home .preview h2 {
+  text-transform: capitalize;
+  margin-top: 0;
+}
+
+.home .preview p {
+  text-align: center;
+}
+
+.home .preview button {
+  font-size: 1rem;
+}
+
+.home ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.home ul li {
+  margin: 0.5rem 0;
+}
+
+.home ul li button {
+  width: 100%;
+  font-size: 1.5rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-transform: capitalize;
+}
+
+.home ul li button:hover {
+  cursor: pointer;
+}
+
+.view_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.view_item h2 {
+  margin-top: 3rem;
+  text-transform: capitalize;
+}
+
+.view_item p {
+  text-align: center;
+}
+
+.view_item button {
+  font-size: 1rem;
+}
+
+.reactbody {
+  background-color: #049a8f;
+}
+
+h1 {
+  font-weight: 500;
+  font-family: 'Lobster Two', sans-serif;
+}
+
+button {
+  font-family: 'Raleway', sans-serif;
+  background-color: #051C33;
+  font-weight: 300;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  color: white;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 100px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #037971;
+}
+
+div, p, span {
+  font-family: 'Raleway', sans-serif;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 2px solid gray;
+}
+
+.header h1 {
+  text-align: center;
+}
+/*# sourceMappingURL=main.css.map */
