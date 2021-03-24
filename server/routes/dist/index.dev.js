@@ -26,6 +26,7 @@ app.use(function (req, res, next) {
   next();
 });
 app.use(_express["default"]["static"]('public')); // app.use(express.static('bin', { etag: false }));
+// app.use(helmet());
 
 app.set('view engine', 'ejs');
 app.use((0, _cors["default"])());

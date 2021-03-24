@@ -21,6 +21,7 @@ app.use(function (req, res, next) {
 app.use(express.static('public'));
 // app.use(express.static('bin', { etag: false }));
 
+// app.use(helmet());
 app.set('view engine', 'ejs');
 
 app.use(cors());

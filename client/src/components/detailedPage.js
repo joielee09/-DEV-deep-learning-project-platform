@@ -20,6 +20,15 @@ import FormData from 'form-data';
 // }
 
 
+// data from databse
+let res;
+const mapStateToProps = (state) => {
+  res = state.list;
+  return {
+    item: state.list,
+  };
+}
+  
 const DetailedPage = (params) => {
 
   console.log("params", params)

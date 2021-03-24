@@ -13,10 +13,9 @@ var projects = {
     image: 'https://i1.wp.com/appliedmachinelearning.blog/wp-content/uploads/2018/03/output.png?resize=346%2C252&ssl=1',
     component: 'imageClassification'
   }, {
-    id: 2,
+    id: 102,
     title: 'Style Transfer',
-    summary: 'Transfers two pictures into one stylish picture.',
-    description: 'Transfers two pictures into one stylish picture.Transfers two pictures into one stylish picture.Transfers two pictures into one stylish picture.Transfers two pictures into one stylish picture.Transfers two pictures into one stylish picture.Transfers two pictures into one stylish picture.Transfers two pictures into one stylish picture.',
+    description: 'Transfers two pictures into one stylish picture.',
     image: 'https://blog.kakaocdn.net/dn/cx9oYX/btqzvJDmJT0/uKjE0sSf3sAkd6LfHmicr0/img.jpg',
     component: 'styleTransfer'
   }, {
@@ -27,10 +26,9 @@ var projects = {
     image: 'https://i.ytimg.com/vi/98Q-DgVxBr4/hqdefault.jpg',
     component: 'catDog'
   }, {
-    id: 4,
+    id: 104,
     title: 'Visual tracking system',
-    summary: 'A visual tracking system is designed to track and locate moving object(s) in a given time frame via a camera.',
-    description: 'A visual tracking system is designed to track and locate moving object(s) in a given time frame via a camera. It is a handy tool that has numerous applications such as security and surveillance, medical imaging, augmented reality, traffic control, video editing and communication, and human-computer interaction.A visual tracking system is designed to track and locate moving object(s) in a given time frame via a camera. It is a handy tool that has numerous applications such as security and surveillance, medical imaging, augmented reality, traffic control, video editing and communication, and human-computer interaction.A visual tracking system is designed to track and locate moving object(s) in a given time frame via a camera. It is a handy tool that has numerous applications such as security and surveillance, medical imaging, augmented reality, traffic control, video editing and communication, and human-computer interaction.A visual tracking system is designed to track and locate moving object(s) in a given time frame via a camera. It is a handy tool that has numerous applications such as security and surveillance, medical imaging, augmented reality, traffic control, video editing and communication, and human-computer interaction.',
+    description: 'A visual tracking system is designed to track and locate moving object(s) in a given time frame via a camera. It is a handy tool that has numerous applications such as security and surveillance, medical imaging, augmented reality, traffic control, video editing and communication, and human-computer interaction.',
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuBwpBtUd92t-S1fTn0pFTRI_z3UMF1AkFKA&usqp=CAU',
     component: 'catDog'
   }],
