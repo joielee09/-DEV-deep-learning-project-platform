@@ -15,16 +15,16 @@ Python Server: https://github.com/joielee09/deep-learning-project-platform-pytho
 
 ### [2] 기술스택:
 - 프론트: JavaScript, React JS <br>
-- 웹백엔드(서버): JavaScript, Node JS: express를 사용. SSR(예정) <br>
-- 모델 백엔드(서버): Python, Flask (Flask-ngrok): python 기반으로 데이터 분석 및 머신러닝/딥러닝 모델을 작성. python 언어 중 flask를 사용해서 서버를 구축하고 ngrok을 통해 외부와 통신하는 포트를 엶. <br>
+- 웹백엔드(서버): JavaScript, Node JS: express를 사용. SSR <br>
+- 모델 백엔드(서버): Python, Flask: python 기반으로 데이터 분석 및 머신러닝/딥러닝 모델을 작성. python 언어 중 flask를 사용해서 서버를 구축<br>
 
 - 통신: axios: axios post를 사용해 웹 프론트와 학습모델을 가진 GPU EC2 사이의 통신으로 모델을 이용함. <br>
-- 데이터베이스(예정): CPU EC2에 AWS RDS(mySQL)를 연결시켜 프로젝트의 정보를 담은 정형 데이터베이스로 사용. GPU EC2에 AWS DynamoDB를 연결시켜 비정형 데이터베이스(사진, 영상, 등)로 사용. <br>
+- 데이터베이스: CPU EC2에 AWS RDS(mySQL)를 연결시켜 프로젝트의 정보를 담은 정형 데이터베이스로 사용. GPU EC2에 AWS DynamoDB를 연결시켜 비정형 데이터베이스(사진, 영상, 등)로 사용. <br>
 
-- CI/CD: travis(예정) <br>
+- CI/CD: travis, github action <br>
 - Build: webpack, babel("babel/preset-env",, "babel/preset-react") <br>
 - Deploy: AWS EC2 <br>
-- Test: Jest (예정)
+- Test: Jest
 - 커뮤니케이션 툴: git <br>
 
 ### [3] 간단한 소개: 
