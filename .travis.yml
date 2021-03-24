@@ -1,4 +1,16 @@
 language: node_js
-
+node_js:
+  – "8"
+install:
+-npm install
+-npm run build
+- sleep 30
 script: 
-  - npm run test
+- npm run start
+- sleep 5
+- npm run test
+deploy:
+  ./server/bin
+  ./server/public
+  on:
+    branch: master
