@@ -1,7 +1,7 @@
 ## Deep Learning Project Platform
 
 [![Build Status](https://travis-ci.com/joielee09/deep-learning-project-platform.svg?branch=master)](https://travis-ci.com/joielee09/deep-learning-project-platform)
-
+[![Node.js CI](https://github.com/joielee09/deep-learning-project-platform/actions/workflows/node.js.yml/badge.svg)](https://github.com/joielee09/deep-learning-project-platform/actions/workflows/node.js.yml)
 ![12](https://user-images.githubusercontent.com/67178982/111092523-a45c9500-8579-11eb-8e5a-f8423ca24d38.PNG)
 
 🙌coworking with...🙌 <br>
