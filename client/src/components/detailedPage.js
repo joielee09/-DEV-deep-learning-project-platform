@@ -22,10 +22,11 @@ import FormData from 'form-data';
 
 const DetailedPage = (params) => {
 
+  console.log("params", params)
   const category = params ? params.match.params.name : '';
   const cat_id = params ? params.match.params.id : '';
-  const project_ = params ? projects[category].filter(cur => parseInt(cur.id) === parseInt(cat_id)) : '';
-  const project = params ? project_[0] : '';
+  // const project_ = params ? projects[category].filter(cur => parseInt(cur.id) === parseInt(cat_id)) : '';
+  // const project = params ? project_[0] : '';
   const [password, setPassword] = useState('');
   const [result, setResult] = useState({
     ID: '1',
@@ -44,7 +45,7 @@ const DetailedPage = (params) => {
   const getData = () => {
     let axiosRes;
     const data = { id: cat_id, flag: 'getData' };
-    axios.post(`http://localhost:5001/view/${result.CATEGORY}/${result.ID}`,
+    axios.post(`http://localhost:5001/view/${category}/${cat_id}`,
       data,
       { headers: {  'Content-Type': 'application/json',  }, },
     )
@@ -57,6 +58,7 @@ const DetailedPage = (params) => {
               break;
             }
         }
+        console.log("tmp: ", tmp);
         setResult(tmp);
     })
       .catch((error) => console.log(error))
@@ -99,7 +101,6 @@ const DetailedPage = (params) => {
     <span>작성자: {result.AUTHOR}</span><span>&nbsp;&nbsp;&nbsp;</span><span>작성시간: {result.CREATED_AT.slice(0,10)} {result.CREATED_AT.slice(11,19)}</span><span>&nbsp;&nbsp;&nbsp;</span><span>조회수: {result.VIEW_COUNT}</span><span>&nbsp;&nbsp;&nbsp;</span><span>좋아요:{result.LIKE_COUNT}</span><br/><br />
     
     {/* 비밀번호로 접근권한 제어 */}
-    
     <div
       className="update delete component"
       style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }} >
@@ -115,7 +116,6 @@ const DetailedPage = (params) => {
             query: { id: result.ID, category: result.CATEGORY }
         }} 
       >
-      {/* <form method="post" action="/" encType="Content-Type: application/x-www-form-urlencoded" > */}
         <input style={{ display: "none" }} value={"update"} name="flag" ></input>
         <input style={{ display: "none" }} value={result.ID} name="id" ></input>
         <button
@@ -125,7 +125,6 @@ const DetailedPage = (params) => {
           style={{ backgroundColor: password === result.PASSWORD ? 'green' : 'gray', margin:"5px" }}
           disabled={password===result.PASSWORD? false:true}
         >UPDATE</button>
-      {/* </form> */}
     </Link>
       <form method="post" action="/" encType="Content-Type: application/x-www-form-urlencoded" >
         <input style={{ display: "none" }} value={"delete"} name="flag" ></input>
@@ -139,11 +138,10 @@ const DetailedPage = (params) => {
       </form>
     </div>
     
-    <div className="project information">
-      
       {/* Project: get the component path */}
+    <div className="project information">
       <div className="projectContainer" style={{ padding: '70px' }}>
-        {handleComponent(project.component)}
+        {handleComponent(result.component)}
       </div>
 
       {/* Description */}
