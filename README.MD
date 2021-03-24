@@ -75,4 +75,3 @@ run on http://localhost:5001 <br>
 
 ##### BasedOn
 - boilerplate: https://github.com/tahnik/react-expressjs
-- image classification pipeline: https://github.com/ndb796/CNN-based-Celebrity-Classification-AI-Service-Using-Transfer-Learning
