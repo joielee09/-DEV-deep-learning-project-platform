@@ -28,23 +28,23 @@ const DetailedPage = (params) => {
   const project = params ? project_[0] : '';
   const [password, setPassword] = useState('');
   const [result, setResult] = useState({
-  ID: '1',
-  CATEGORY: 'CV',
-  TITLE: 'cat or dog222',
-  AUTHOR: 'jaeyoung',
-  PASSWORD: 'asdf',
-  VIEW_COUNT: '47',
-  LIKE_COUNT: '12',
-  DESCRIPTION: 'this is default value from redux!!',
-  IMAGE: 'https://images.mypetlife.co.kr/content/uploads/2019/09/04222847/dog-panting-1024x683.jpg',
-  CREATED_AT:"2021-03-20T22:43:08.000Z"
+    ID: '1',
+    CATEGORY: 'CV',
+    TITLE: 'cat or dog222',
+    AUTHOR: 'jaeyoung',
+    PASSWORD: 'asdf',
+    VIEW_COUNT: '47',
+    LIKE_COUNT: '12',
+    DESCRIPTION: 'this is default value from redux!!',
+    IMAGE: 'https://images.mypetlife.co.kr/content/uploads/2019/09/04222847/dog-panting-1024x683.jpg',
+    CREATED_AT:"2021-03-20T22:43:08.000Z"
 });
   console.log("detailed page rendered")
   
   const getData = () => {
     let axiosRes;
     const data = { id: cat_id, flag: 'getData' };
-    axios.post('http://localhost:5001/view/NLP/5',
+    axios.post(`http://localhost:5001/view/${result.CATEGORY}/${result.ID}`,
       data,
       { headers: {  'Content-Type': 'application/json',  }, },
     )
@@ -58,9 +58,7 @@ const DetailedPage = (params) => {
               break;
             }
         }
-        console.log("tmp: ", tmp);
         setResult(tmp);
-      console.log( res.data.slice(2997, parseInt(len - 74)) );
     })
       .catch((error) => console.log(error))
     return axiosRes;
@@ -112,7 +110,12 @@ const DetailedPage = (params) => {
         onChange={(e) => setPassword(e.target.value)}
         placeholder="비밀번호를 입력하세요"
       ></input>
-      <Link to="/updateProject">
+      <Link
+        to={{
+            pathname:`/view/${result.CATEGORY}/${result.ID}/updateProject`,
+            query: { id: result.ID, category: result.CATEGORY }
+        }} 
+      >
       {/* <form method="post" action="/" encType="Content-Type: application/x-www-form-urlencoded" > */}
         <input style={{ display: "none" }} value={"update"} name="flag" ></input>
         <input style={{ display: "none" }} value={result.ID} name="id" ></input>

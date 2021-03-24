@@ -1,34 +1,51 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const createProject = (params) => {
 
-  console.log('params: ', params);
+  const category = params.location.query.category;
+  const cat_ID = params.location.query.id;
   const [title, setTitle] = useState('');
   const [writer, setWriter] = useState('');
   const [password, setPassword] = useState('');
   const [desc, setDesc] = useState('');
   const [frontEnd, setFrontEnd] = useState(false);
+  const [result, setResult] = useState({
+    ID: '1',
+    CATEGORY: 'CV',
+    TITLE: 'cat or dog222',
+    AUTHOR: 'jaeyoung',
+    PASSWORD: 'asdf',
+    VIEW_COUNT: '47',
+    LIKE_COUNT: '12',
+    DESCRIPTION: 'this is default value from redux!!',
+    IMAGE: 'https://images.mypetlife.co.kr/content/uploads/2019/09/04222847/dog-panting-1024x683.jpg',
+    CREATED_AT:"2021-03-20T22:43:08.000Z"
+  });
 
   const getData = () => {
     let axiosRes;
-    const data = { id: cat_id, flag: 'getData' };
-    axios.post('http://localhost:5001/view/NLP/5',
+    const data = { id: cat_ID, flag: 'getData' };
+    // console.log("hit get data");
+    // axios.post(`http://localhost:5001/view/${category}/${cat_ID}/updateProject`,
+      axios.post(`http://localhost:5001/view/NLP/6/updateProject`,
       data,
       { headers: {  'Content-Type': 'application/json',  }, },
     )
       .then((res) => {
         const len = res.data.length;
-        
         let tmp;
         for (let i = 0; i < res.data.length; i++){
           if (res.data.slice(i, (i + 6)) === 'window') {
-              tmp = JSON.parse(res.data.slice(i+28, parseInt(len - 74)));
+            // tmp = JSON.parse(res.data.slice(i + 28, parseInt(len - 74)));
+            tmp = res.data.slice(i + 28, parseInt(len - 74));
+            console.log("tmp from update Project: ", tmp);
               break;
             }
         }
-        console.log("tmp: ", tmp);
-        setResult(tmp);
-      console.log( res.data.slice(2997, parseInt(len - 74)) );
+        console.log("tmp from update Project: ", tmp);
+        // setResult(tmp);
+      // console.log( res.data.slice(2997, parseInt(len - 74)) );
     })
       .catch((error) => console.log(error))
     return axiosRes;
@@ -39,12 +56,11 @@ const createProject = (params) => {
     console.log("e.target: ", e.target);
   };
 
-  // useEffect(() => {
-  //   // getData()
-  // }, []);
+  useEffect(() => {
+    getData()
+  }, []);
 
   return (
-    //value를 가지고 와서 update finde by id
     <div className="updateProject">
       <h1>update project</h1>
       
@@ -88,9 +104,7 @@ const createProject = (params) => {
         
         <textarea
           name="description"
-          cols="50px"
-            rows="100px"
-            style={{ width:"800px", height:"800px" }}
+          style={{ width:"900px", height:"400px" }}
           value={desc}
           onChange={e => setDesc(e.target.value)}
         />

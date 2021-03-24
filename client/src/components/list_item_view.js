@@ -5,9 +5,8 @@ import {
   projects,
 } from '../../../db.js';
 
-const ListItemView = (params) => {
 
-  
+const ListItemView = (params) => {
 
   console.log("list item view rendered")
   const { name } = params.match.params;

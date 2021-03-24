@@ -21,6 +21,7 @@ router.post('/*', async (req, res) => {
   let finalState = { 'title': 'happy kitten' }
   const store_ = store;
 
+
   // READ PROJECT
   if (req.body['flag'] === 'getData') {
     console.log("read project");
@@ -34,22 +35,23 @@ router.post('/*', async (req, res) => {
     })
   }
 
-  // Create: try catch로 바꾸기
-  const id = req.body.id_number;
-  // console.log('id in ssr: ', id);
-  // console.log('req.body in ssr: ', req.body);
-  const { category } = req.body;
-  const { title } = req.body;
-  const { author } = req.body;
-  const { password } = req.body;
-  const { view_count } = req.body || 47;
-  const { like_count } = req.body || 23;
-  const { description } = req.body;
-  const image = 'https://cdn.aitimes.kr/news/photo/202002/15296_16544_4827.jpg';
-  // const component = 'imageClassification';
 
-  // const insertSql = `INSERT INTO PROJECT(CATEGORY, TITLE, AUTHOR, PASSWORD, VIEW_COUNT, LIKE_COUNT, DESCRIPTION, IMAGE) VALUES ('${category}','${title}', '${author}', '${password}', '${view_count}', '${like_count}', '${description}','${image}');`;
-  // if (title !== null && id === undefined) dbs.makeProjects(insertSql);
+  // Create: try catch로 바꾸기
+  if (req.body['flag'] === 'create') {
+    const { CATEGORY } = req.body.CATEGORY? req.body : 'EMTPY';
+    const { TITLE } = req.body.TITLE? req.body : 'EMTPY';
+    const { AUTHOR } = req.body.AUTHOR? req.body : 'EMTPY';
+    const { PASSWORD } = req.body.PASSWORD? req.body : 'EMTPY';
+    // const VIEW_COUNT = parseInt(req.body) || 1;
+    // const LIKE_COUNT = parseInt(req.body) || 1;
+    const { DESCRIPTION } = req.body.DESCRIPTION? req.body : 'EMTPY';
+    const IMAGE = req.body.IMAGE? req.body.IMAGE : 'https://images.mypetlife.co.kr/content/uploads/2019/09/04222847/dog-panting-1024x683.jpg';
+    const COMPONENT = req.body.COMPONENT? req.body.COMPONENT : 'EMTPY';
+    const NEEDFE = req.body.NEEDFE ? (req.body.NEEDFE==='on'? 1 : 0) : false;
+    console.log("create value: ", req.body.NEEDFE);
+    const insertSql = `INSERT INTO PROJECT (CATEGORY, TITLE, AUTHOR, PASSWORD, DESCRIPTION, IMAGE, COMPONENT, NEEDFE) VALUES ('${CATEGORY}','${TITLE}', '${AUTHOR}', '${PASSWORD}', '${DESCRIPTION}','${IMAGE}', '${COMPONENT}', '${NEEDFE}');`;
+    dbs.makeProjects(insertSql);
+  };
 
   // Delete
   if (req.body.flag === 'delete') {
@@ -59,14 +61,26 @@ router.post('/*', async (req, res) => {
     dbs.deleteProject(deleteSql);
   }
 
+
   // Update: id가 있어야 하므로 req.body.id_number가 있으면 update
   if (req.body['flag'] === 'update') {
     console.log("update project");
-    req.originalUrl = '/updateProject';
-    const updateID = req.body['id'];
-    finalState = await dbs.getOneProjects(updateID)
+    const updateID = req.body.ID || '1';
+    const { CATEGORY } = req.body || 'EMTPY';
+    const { TITLE } = req.body || 'EMTPY' ;
+    const { AUTHOR } = req.body || 'EMTPY';
+    const { PASSWORD } = req.body || 'EMTPY';
+    const { VIEW_COUNT } = req.body || '-1';
+    const { LIKE_COUNT } = req.body || '-1';
+    const { DESCRIPTION } = req.body || 'EMTPY';
+    const IMAGE = req.body || 'EMTPY';
+    const COMPONENT = req.body || 'EMTPY';
+    const NEEDFE = req.body || 'FALSE';
+    const updateSql = `UPDATE PROJECT SET CATEGORY='${CATEGORY}', TITLE='${TITLE}', AUTHOR='${AUTHOR}', PASSWORD='${PASSWORD}', VIEW_COUNT='${VIEW_COUNT}', LIKE_COUNT='${LIKE_COUNT}', DESCRIPTION='${DESCRIPTION}', IMAGE='${IMAGE}' , COMPONENT='${COMPONENT}', NEEDFE='${NEEDFE}' WHERE ID='${updateID}';`
+
+    finalState = await dbs.updateProject(updateSql)
       .then((res) => {
-        console.log("getOneProjectRes res: ", res);
+        console.log("update Project res: ", res);
         return res;
       })
       .catch((error) => {
@@ -100,9 +114,6 @@ router.post('/*', async (req, res) => {
   }
 });
 
-
-
-
 router.get('/*', async (req, res) => {
   console.log("ssr get rendered")
   // const store = createStore(reducers);
@@ -115,26 +126,21 @@ router.get('/*', async (req, res) => {
   const projectId = address ? address.slice(30, 33) : '';
   // console.log('category: ', category, 'projectId: ', projectId);
 
-  const finalState = await dbs.getAllProjects()
-    .then((results) => {
-      let result;
-      results.map((cur) => {
-        if (cur.ID === parseInt(Math.random() * 4) + 1) {
-          result = JSON.stringify(cur);
-          // console.log('result: ', result);
-        }
-      });
-      return result;
-    })
-    .catch((error) => {
-      console.log('error: ', error);
-    });
-  
-  // console.log('finalState: ', finalState);
-  store_.dispatch({
-    type: 'ITEM_RENDER',
-    item: finalState,
-  });
+  const finalState = {'title': 'deep learning project platform'}
+  // const finalState = await dbs.getAllProjects()
+  //   .then((results) => {
+  //     let result;
+  //     results.map((cur) => {
+  //       if (cur.ID === parseInt(Math.random() * 4) + 1) {
+  //         result = JSON.stringify(cur);
+  //         // console.log('result: ', result);
+  //       }
+  //     });
+  //     return result;
+  //   })
+  //   .catch((error) => {
+  //     console.log('error: ', error);
+  //   });
 
   const html = ReactDOMServer.renderToString(
     <Provider store={store_}>

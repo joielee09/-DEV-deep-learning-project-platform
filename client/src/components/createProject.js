@@ -7,12 +7,14 @@ const createProject = () => {
   const options = [
   'CV', 'NLP', 'RecSys', 'ETC'
   ];
-  const [Opt, setOpt] = useState(options[0]);
+  const [selectValue, setSelectValue] = useState('');
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [password, setPassword] = useState('');
-  const [frontEnd, setFrontEnd] = useState('');
   const [desc, setDesc] = useState('');
+  const [image, setImage] = useState('https://images.mypetlife.co.kr/content/uploads/2019/09/04222847/dog-panting-1024x683.jpg');
+  const [component, setComponent] = useState('');
+  const [frontEnd, setFrontEnd] = useState(false);
 
   const onClickhandler = (e) => {
     // e.preventDefault();
@@ -23,11 +25,17 @@ const createProject = () => {
     <div className="createProject">
       <h1>create project</h1>
       <form method="post" action="/" encType="Content-Type: application/x-www-form-urlencoded">
-        <div className="project information" style={{ height:"80px" }} >
-        <Dropdown options={options} onChange={setOpt} name="category" value={Opt} placeholder="Select an option" />
+        <input style={{ display: "none" }} value={"create"} name="flag" ></input>
+        <div className="project information" style={{ height: "80px" }}>
+        <select name="CATEGORY" value={selectValue} onChange={e=>setSelectValue(e.target.value)} >
+            <option value="CV" >CV</option>
+            <option value="NLP" >NLP</option>
+            <option value="Reccomendation System" >Recommendation System</option>
+            <option value="ETC" >ETC</option>
+        </select><br />
         <input
           type="text"
-          name="title"
+          name="TITLE"
           value={title}
           onChange={e => setTitle(e.target.value)}
           placeholder="프로젝트 제목을 입력하세요"
@@ -35,7 +43,7 @@ const createProject = () => {
         
           <input
           type="text"
-          name="author"
+          name="AUTHOR"
           value={author}
           onChange={e => setAuthor(e.target.value)}
           placeholder="작성자 이름(예. 이재영T_1250)"
@@ -43,7 +51,7 @@ const createProject = () => {
         
           <input
           type="password"
-          name="password"
+          name="PASSWORD"
           value={password}
           onChange={e => setPassword(e.target.value)}
           placeholder="비밀번호를 입력하세요"
@@ -51,24 +59,22 @@ const createProject = () => {
           
           <span>프런트앤드 도움이 필요합니다.</span><input
           type="checkbox"
-          name="frontEnd Needed"
-          value={frontEnd}
-          onChange={e => setFrontEnd(e.target.value)}
+          name="NEEDFE"
+          checked={frontEnd}
+          onClick={()=>setFrontEnd(!frontEnd)}
           /><br />
-          {/* like_count */}
+
+          <br />
+        <input type="submit" value="올리기" onClick={e => onClickhandler(e)} />
+        <br /><br /><br />
         
-          <input type="submit" value="올리기" onClick={e => onClickhandler(e)} />
-        
-        </div>
-        
-        <br /><br />
         <textarea
-          name="description"
-          cols="50px"
-          rows="100px"
+            name="DESCRIPTION"
+            style={{ width: "900px", height: "500px" }}
           value={desc}
           onChange={e => setDesc(e.target.value)}
-        />
+          />
+          </div>
       </form>
     </div>
   );
