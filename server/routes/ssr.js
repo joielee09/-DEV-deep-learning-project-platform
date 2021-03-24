@@ -18,29 +18,21 @@ router.post('/*', async (req, res) => {
 
   console.log("ssr post rendered")
   const context = {};
-  const finalState = { 'title': 'happy kitten' }
-
-  const getOneProjectRes = await dbs.getOneProjects(req.body['id'])
-    .then((res) => {
-      console.log("getOneProjectRes res: ", res);
-      return res;
-    })
-    .catch((error) => {
-      console.log(error);
-  })
-
+  let finalState = { 'title': 'happy kitten' }
   const store_ = store;
 
-  const html = ReactDOMServer.renderToString(
-    <Provider store={store_}>
-      <StaticRouter
-        location={req.originalUrl}
-        context={context}
-      >
-        <App />
-      </StaticRouter>
-    </Provider>,
-  );
+  // READ PROJECT
+  if (req.body['flag'] === 'getData') {
+    console.log("read project");
+    finalState = await dbs.getOneProjects(req.body['id'])
+      .then((res) => {
+        console.log("getOneProjectRes res: ", res);
+        return res;
+      })
+      .catch((error) => {
+        console.log(error);
+    })
+  }
 
   // Create: try catch로 바꾸기
   const id = req.body.id_number;
@@ -60,17 +52,38 @@ router.post('/*', async (req, res) => {
   // if (title !== null && id === undefined) dbs.makeProjects(insertSql);
 
   // Delete
-  // const selectedID = '5';
-  // const { title } = req.body;
-  // const { description } = req.body;
-  // const { writer } = req.body;
-  // const like_count = '16';
-  // const deleteSql = `DELETE FROM PROJECT WHERE id=${6}`;
-  // if (req.body) dbs.deleteProject(deleteSql);
+  if (req.body.flag === 'delete') {
+    console.log("delete project");
+    const deleteID = req.body.id;
+    const deleteSql = `DELETE FROM PROJECT WHERE id=${deleteID}`;
+    dbs.deleteProject(deleteSql);
+  }
 
   // Update: id가 있어야 하므로 req.body.id_number가 있으면 update
-  // const selectedID = '5';
-  // const updateSql = ``
+  if (req.body['flag'] === 'update') {
+    console.log("update project");
+    req.originalUrl = '/updateProject';
+    const updateID = req.body['id'];
+    finalState = await dbs.getOneProjects(updateID)
+      .then((res) => {
+        console.log("getOneProjectRes res: ", res);
+        return res;
+      })
+      .catch((error) => {
+        console.log(error);
+    })
+  }
+
+  const html = ReactDOMServer.renderToString(
+    <Provider store={store_}>
+      <StaticRouter
+        location={req.originalUrl}
+        context={context}
+      >
+        <App />
+      </StaticRouter>
+    </Provider>,
+  );
 
   if (context.url) {
     res.writeHead(301, {
@@ -81,7 +94,7 @@ router.post('/*', async (req, res) => {
   } else {
     res.status(200).render('../views/index.ejs', {
       html,
-      script: JSON.stringify(getOneProjectRes),
+      script: JSON.stringify(finalState),
       'Access-Control-Allow-Origin': '*',
     });
   }
