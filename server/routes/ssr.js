@@ -21,6 +21,18 @@ router.post('/*', async (req, res) => {
   let finalState = { 'title': 'happy kitten' }
   const store_ = store;
 
+  // READ CATEGORY
+  if (req.body['flag'] === 'getCategory') {
+    console.log('read category');
+    finalState = await dbs.getCategory(req.body['cat_name'])
+      .then((res) => {
+        console.log("read category: ", res);
+        return res;
+      })
+      .catch((error) => {
+        console.log("error in read category", error);
+      })
+  }
 
   // READ PROJECT
   if (req.body['flag'] === 'getData') {
@@ -78,15 +90,17 @@ router.post('/*', async (req, res) => {
     const NEEDFE = req.body || 'FALSE';
     const updateSql = `UPDATE PROJECT SET CATEGORY='${CATEGORY}', TITLE='${TITLE}', AUTHOR='${AUTHOR}', PASSWORD='${PASSWORD}', VIEW_COUNT='${VIEW_COUNT}', LIKE_COUNT='${LIKE_COUNT}', DESCRIPTION='${DESCRIPTION}', IMAGE='${IMAGE}' , COMPONENT='${COMPONENT}', NEEDFE='${NEEDFE}' WHERE ID='${updateID}';`
 
-    finalState = await dbs.updateProject(updateSql)
-      .then((res) => {
-        console.log("update Project res: ", res);
-        return res;
-      })
-      .catch((error) => {
-        console.log(error);
-    })
+    // finalState = await dbs.updateProject(updateSql)
+    //   .then((res) => {
+    //     console.log("update Project res: ", res);
+    //     return res;
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    // })
   }
+
+
 
   const html = ReactDOMServer.renderToString(
     <Provider store={store_}>

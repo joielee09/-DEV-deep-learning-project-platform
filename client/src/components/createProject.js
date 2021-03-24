@@ -28,9 +28,9 @@ const createProject = () => {
         <input style={{ display: "none" }} value={"create"} name="flag" ></input>
         <div className="project information" style={{ height: "80px" }}>
         <select name="CATEGORY" value={selectValue} onChange={e=>setSelectValue(e.target.value)} >
-            <option value="CV" >CV</option>
-            <option value="NLP" >NLP</option>
-            <option value="Reccomendation System" >Recommendation System</option>
+            <option value="CV" >Computer Vision</option>
+            <option value="NLP" >Natural Language</option>
+            <option value="RecSys" >Recommendation System</option>
             <option value="ETC" >ETC</option>
         </select><br />
         <input

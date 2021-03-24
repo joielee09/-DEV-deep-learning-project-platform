@@ -9,6 +9,22 @@ const connection = mysql.createConnection({
   database:'dpp',
 })
 
+const getCategory = (cat_name) => {
+  return new Promise(
+    function (resolve, reject) {
+      connection.query(
+        // sql
+        `SELECT * FROM PROJECT WHERE CATEGORY='${cat_name}'`,
+        // function
+        function (err, rows, field) {
+          if (err) throw err;
+          resolve(rows);
+        }
+      );
+    }
+  )
+}
+
 const getOneProjects = (id) => {
   return new Promise(
     function (resolve, reject) {
@@ -91,5 +107,6 @@ module.exports = {
   makeProjects,
   deleteProject,
   updateProject,
-  getOneProjects
+  getOneProjects,
+  getCategory
 }

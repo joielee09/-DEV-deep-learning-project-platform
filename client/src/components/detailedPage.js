@@ -50,7 +50,6 @@ const DetailedPage = (params) => {
     )
       .then((res) => {
         const len = res.data.length;
-        
         let tmp;
         for (let i = 0; i < res.data.length; i++){
           if (res.data.slice(i, (i + 6)) === 'window') {

@@ -13,6 +13,17 @@ var connection = mysql.createConnection({
   database: 'dpp'
 });
 
+var getCategory = function getCategory(cat_name) {
+  return new Promise(function (resolve, reject) {
+    connection.query( // sql
+    "SELECT * FROM PROJECT WHERE CATEGORY='".concat(cat_name, "'"), // function
+    function (err, rows, field) {
+      if (err) throw err;
+      resolve(rows);
+    });
+  });
+};
+
 var getOneProjects = function getOneProjects(id) {
   return new Promise(function (resolve, reject) {
     connection.query( // sql
@@ -70,5 +81,6 @@ module.exports = {
   makeProjects: makeProjects,
   deleteProject: deleteProject,
   updateProject: updateProject,
-  getOneProjects: getOneProjects
+  getOneProjects: getOneProjects,
+  getCategory: getCategory
 };
