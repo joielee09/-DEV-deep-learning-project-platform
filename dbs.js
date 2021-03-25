@@ -95,7 +95,7 @@ const updateProject = (insertSql) => {
         insertSql, //sql
         function (err, rows, field) { //function
           if (err) throw err;
-          else console.log("deleted record successfully");
+          else console.log("updated record successfully");
         }
       )
     }
