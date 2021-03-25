@@ -71,7 +71,7 @@ var updateProject = function updateProject(insertSql) {
     connection.query(insertSql, //sql
     function (err, rows, field) {
       //function
-      if (err) throw err;else console.log("deleted record successfully");
+      if (err) throw err;else console.log("updated record successfully");
     });
   });
 };

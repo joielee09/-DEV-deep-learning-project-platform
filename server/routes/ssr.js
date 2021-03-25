@@ -8,6 +8,7 @@ import { store } from '../../client/src/reducers/list';
 import { LIST_ACTIONS } from '../../client/src/consts/action_types';
 import App from '../../client/src/app';
 import dbs from '../../dbs';
+import { DataUsageSharp } from '@material-ui/icons';
 
 const router = express.Router();
 
@@ -16,7 +17,7 @@ console.log("ssr rendered")
 
 router.post('/*', async (req, res) => {
 
-  console.log("ssr post rendered")
+  console.log("ssr post rendered", req.body)
   const context = {};
   let finalState = { 'title': 'happy kitten' }
   const store_ = store;
@@ -81,15 +82,17 @@ router.post('/*', async (req, res) => {
     const { CATEGORY } = req.body || 'EMTPY';
     const { TITLE } = req.body || 'EMTPY' ;
     const { AUTHOR } = req.body || 'EMTPY';
-    const { PASSWORD } = req.body || 'EMTPY';
-    const { VIEW_COUNT } = req.body || '-1';
-    const { LIKE_COUNT } = req.body || '-1';
+    // const { PASSWORD } = req.body || 'EMTPY';
+    // const { VIEW_COUNT } = req.body || '-1';
+    // const { LIKE_COUNT } = req.body || '-1';
     const { DESCRIPTION } = req.body || 'EMTPY';
-    const IMAGE = req.body || 'EMTPY';
-    const COMPONENT = req.body || 'EMTPY';
-    const NEEDFE = req.body || 'FALSE';
-    const updateSql = `UPDATE PROJECT SET CATEGORY='${CATEGORY}', TITLE='${TITLE}', AUTHOR='${AUTHOR}', PASSWORD='${PASSWORD}', VIEW_COUNT='${VIEW_COUNT}', LIKE_COUNT='${LIKE_COUNT}', DESCRIPTION='${DESCRIPTION}', IMAGE='${IMAGE}' , COMPONENT='${COMPONENT}', NEEDFE='${NEEDFE}' WHERE ID='${updateID}';`
-
+    const IMAGE = req.body.IMAGE? req.body.IMAGE : 'https://images.mypetlife.co.kr/content/uploads/2019/09/04222847/dog-panting-1024x683.jpg';
+    const COMPONENT = req.body.COMPONENT? req.body.COMPONENT : 'EMTPY';
+    const NEEDFE = req.body.NEEDFE ? (req.body.NEEDFE==='on'? 1 : 0) : false;
+    // const updateSql = `UPDATE PROJECT SET CATEGORY='${CATEGORY}', TITLE='${TITLE}', AUTHOR='${AUTHOR}', PASSWORD='${PASSWORD}', VIEW_COUNT='${VIEW_COUNT}', LIKE_COUNT='${LIKE_COUNT}', DESCRIPTION='${DESCRIPTION}', IMAGE='${IMAGE}' , COMPONENT='${COMPONENT}', NEEDFE='${NEEDFE}' WHERE ID='${updateID}';`
+    const updateSql = `UPDATE PROJECT SET CATEGORY='${CATEGORY}', TITLE='${TITLE}', AUTHOR='${AUTHOR}', DESCRIPTION='${DESCRIPTION}', IMAGE='${IMAGE}' , COMPONENT='${COMPONENT}', NEEDFE='${NEEDFE}' WHERE ID='${updateID}';`
+    console.log(`UPDATE PROJECT SET CATEGORY='${CATEGORY}', TITLE='${TITLE}', AUTHOR='${AUTHOR}', DESCRIPTION='${DESCRIPTION}', IMAGE='${IMAGE}' , COMPONENT='${COMPONENT}', NEEDFE='${NEEDFE}' WHERE ID='${updateID}';`);
+    dbs.updateProject(updateSql);
     // finalState = await dbs.updateProject(updateSql)
     //   .then((res) => {
     //     console.log("update Project res: ", res);

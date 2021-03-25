@@ -3,15 +3,17 @@ import axios from 'axios';
 
 const createProject = (params) => {
 
-  const category = params.location.query.category;
-  const cat_ID = params.location.query.id;
+  // console.log("params: ", params);
+
+  const [ID, setID] = useState('');
+  const [selectValue, setSelectValue] = useState('');
   const [title, setTitle] = useState('');
-  const [writer, setWriter] = useState('');
+  const [author, setAuthor] = useState('');
   const [password, setPassword] = useState('');
   const [desc, setDesc] = useState('');
-  const [frontEnd, setFrontEnd] = useState(false);
+  const [needFE, setNeedFE] = useState(false);
+
   const [result, setResult] = useState({
-    ID: '1',
     CATEGORY: 'CV',
     TITLE: 'cat or dog222',
     AUTHOR: 'jaeyoung',
@@ -20,15 +22,16 @@ const createProject = (params) => {
     LIKE_COUNT: '12',
     DESCRIPTION: 'this is default value from redux!!',
     IMAGE: 'https://images.mypetlife.co.kr/content/uploads/2019/09/04222847/dog-panting-1024x683.jpg',
-    CREATED_AT:"2021-03-20T22:43:08.000Z"
+    COMPONENT: 'EMPTY',
+    NEEDFE: 'true'
   });
 
   const getData = () => {
     let axiosRes;
+    const category = params? params.location.query.category : '';
+    const cat_ID = params ? params.location.query.id : '';
     const data = { id: cat_ID, flag: 'getData' };
-    // console.log("hit get data");
-    // axios.post(`http://localhost:5001/view/${category}/${cat_ID}/updateProject`,
-      axios.post(`http://localhost:5001/view/NLP/6/updateProject`,
+    axios.post(`http://localhost:5001/view/${category}/${cat_ID}/updateProject`,
       data,
       { headers: {  'Content-Type': 'application/json',  }, },
     )
@@ -37,23 +40,24 @@ const createProject = (params) => {
         let tmp;
         for (let i = 0; i < res.data.length; i++){
           if (res.data.slice(i, (i + 6)) === 'window') {
-            // tmp = JSON.parse(res.data.slice(i + 28, parseInt(len - 74)));
-            tmp = res.data.slice(i + 28, parseInt(len - 74));
+            tmp = JSON.parse(res.data.slice(i + 28, parseInt(len - 74)));
+            // tmp = res.data.slice(i + 28, parseInt(len - 74));
             console.log("tmp from update Project: ", tmp);
               break;
             }
         }
-        console.log("tmp from update Project: ", tmp);
-        // setResult(tmp);
-      // console.log( res.data.slice(2997, parseInt(len - 74)) );
+        setSelectValue(tmp.CATEGORY);
+        setTitle(tmp.TITLE);
+        setAuthor(tmp.AUTHOR);
+        setDesc(tmp.DESCRIPTION);
+        setNeedFE(tmp.NEEDFE);
+        setID(tmp.ID);
     })
       .catch((error) => console.log(error))
     return axiosRes;
   }
 
   const onClickhandler = (e) => {
-    // e.preventDefault();
-    console.log("e.target: ", e.target);
   };
 
   useEffect(() => {
@@ -65,51 +69,52 @@ const createProject = (params) => {
       <h1>update project</h1>
       
       <form method="post" action="/" encType="Content-Type: application/x-www-form-urlencoded">
-      <div className="project information" style={{ height:"80px" }} >
+        <input style={{ display: "none" }} value={"update"} name="flag" ></input>
+        <input style={{ display: "none" }} value={ID} name="ID" ></input>
+        <div className="project information" style={{ height: "80px" }} >
+        
+        <select name="CATEGORY" value={selectValue} onChange={e => setSelectValue(e.target.value)} >
+          <option value="CV" >Computer Vision</option>
+          <option value="NLP" >Natural Language</option>
+          <option value="RecSys" >Recommendation System</option>
+          <option value="ETC" >ETC</option>
+        </select><br />
+          
         <input
           type="text"
-          name="title"
+          name="TITLE"
           value={title}
           onChange={e => setTitle(e.target.value)}
           placeholder="프로젝트 제목을 입력하세요"
         /><br />
         
-          <input
+        <input
           type="text"
-          name="writer"
-          value={writer}
-          onChange={e => setWriter(e.target.value)}
+          name="AUTHOR"
+          value={author}
+          onChange={e => setAuthor(e.target.value)}
           placeholder="작성자 이름(예. 이재영T_1250)"
         /><br />
-       
-          <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          placeholder="비밀번호를 입력하세요"
-          /><br />
-       
+
           <span>프런트앤드 도움이 필요합니다.</span><input
-          type="checkbox"
-          name="frontEnd Needed"
-          value={frontEnd}
-          onChange={e => setFrontEnd(e.target.value)}
+            type="checkbox"
+            name="NEEDFE"
+            value={needFE}
+            onChange={e => setNeedFE(e.target.value)}
           /><br />
-       
+
           <input type="submit" value="올리기" onClick={e => onClickhandler(e)} />
-        
+
         </div>
           <br /><br />
-        
+
         <textarea
-          name="description"
+          name="DESCRIPTION"
           style={{ width:"900px", height:"400px" }}
           value={desc}
           onChange={e => setDesc(e.target.value)}
         />
         </form>
-      {/* <button type="submit">submit</button> */}
       <button
         type="button"
         onClick={() => params.history.goBack()}
