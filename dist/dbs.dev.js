@@ -6,11 +6,11 @@ var _require = require('prop-types'),
     func = _require.func;
 
 var connection = mysql.createConnection({
-  host: 'database-1.cso5uhd7wven.ap-northeast-2.rds.amazonaws.com',
-  user: 'admin',
-  password: 'qpio9023',
-  port: 3306,
-  database: 'dpp'
+  host: 'database-12.rds.amazonaws.com',
+  user: '',
+  password: '',
+  port: ,
+  database: ''
 });
 
 var getCategory = function getCategory(cat_name) {
